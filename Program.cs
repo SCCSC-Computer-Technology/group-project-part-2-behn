@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using SportsApp2.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<BEHNDatabaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BEHNDatabase")));
 
 var app = builder.Build();
 
