@@ -25,6 +25,21 @@ namespace SportsApp2.Controllers
             return View();
         }
 
+        public IActionResult Page5()
+        {
+            return View();
+        }
+
+        public IActionResult Page6()
+        {
+            return View();
+        }
+
+        public IActionResult Page7()
+        {
+            return View();
+        }
+
         public IActionResult Contact()
         {
             return View();
