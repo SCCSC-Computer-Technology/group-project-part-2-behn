@@ -1,0 +1,23 @@
+﻿@model List<SportsApp2.Models.Nbateam>
+
+<h1>NBA Teams</h1>
+
+<div class="row">
+    @foreach (var team in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card p-3">
+                <h4>@team.TeamName</h4>
+                <p>@team.Conference - @team.Division</p>
+                <p>Record: @team.Wins - @team.Losses</p>
+
+                <a asp-controller="Test"
+                       asp-action="TeamPlayers"
+                       asp-route-id="@team.NbateamId"
+                       class="btn btn-primary">
+                    View Players
+                </a>
+            </div>
+        </div>
+    }
+</div>

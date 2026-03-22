@@ -1,15 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using SportsApp2.Models;
 using System.Diagnostics;
+using System.Linq;
 
 namespace SportsApp2.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly BEHNDatabaseContext _context;
+
+        public HomeController(BEHNDatabaseContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
+
         public IActionResult Page2()
         {
             return View();
