@@ -1,0 +1,42 @@
+﻿@model SportsApp2.Models.Nbateam
+
+@{
+    ViewData["Title"] = Model.TeamName + " Players";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+</head>
+<body class="w3-light-grey">
+
+    <div class="w3-container w3-padding-32">
+        <a asp-controller="Home" asp-action="Page4" class="w3-button w3-black w3-margin-bottom">Back</a>
+
+        <h1>@Model.TeamName Players</h1>
+
+        <div class="w3-row-padding">
+            @foreach (var player in Model.Nbaplayers)
+            {
+                <div class="w3-third w3-margin-bottom">
+                    <div class="w3-card w3-white w3-padding">
+                        <img src="https://via.placeholder.com/200x250?text=Headshot"
+                             alt="@player.PlayerName"
+                             style="width:100%; height:250px; object-fit:cover;" />
+
+                        <h3>@player.PlayerName</h3>
+                        <p><b>Position:</b> @player.Position</p>
+                        <p><b>Height:</b> @player.Height</p>
+                        <p><b>Weight:</b> @player.Weight</p>
+                        <p><b>College:</b> @player.College</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SportsApp2.Models;
 
 namespace SportsApp2.Controllers
@@ -12,10 +13,18 @@ namespace SportsApp2.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult TeamPlayers(int id)
         {
-            var teams = _context.Nbateams.ToList();
-            return Json(teams);
-        }        
+            var team = _context.Nbateams
+                .Include(t => t.Nbaplayers)
+                .FirstOrDefault(t => t.NbateamId == id);
+
+            if (team == null)
+            {
+                return Content("Team not found.");
+            }
+
+            return View(team);
+        }
     }
 }
