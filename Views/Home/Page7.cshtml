@@ -1,12 +1,12 @@
 ﻿@{
     Layout = null;
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "All Teams Page 7";
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sports Managment -Home</title>
+    <title>Sports Managment - Page 7</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -50,7 +50,7 @@
             }
     </style>
 </head>
-<body> class="w3-light-grey w3-content" style="max-width:1600px">
+<body class="w3-light-grey w3-content" style="max-width:1600px">
 
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
@@ -99,12 +99,25 @@
                     <h1><b>Sports Management</b></h1>
                     <div class="w3-section w3-bottombar w3-padding-16">
                         <span class="w3-margin-right">Filter:</span>
-                        <button class="w3-button w3-black">ALL</button>
-                        <button class="w3-button w3-white"><i class="fa fa-football w3-margin-right"></i>NFL</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-basketball w3-margin-right"></i>NBA</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-star w3-margin-right"></i>FAVORITES</button>
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
+
+                        <a asp-controller="Home" asp-action="Page1" class="w3-button w3-black">ALL</a>
+
+                        <a asp-controller="Home" asp-action="NFLPage1" class="w3-button w3-white">
+                            <i class="fa fa-football w3-margin-right"></i>NFL
+                        </a>
+
+                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-white">
+                            <i class="fa fa-basketball w3-margin-right"></i>NBA
+                        </a>
+
+                        <a asp-controller="Home" asp-action="Favorites" class="w3-button w3-white">
+                            <i class="fa fa-star w3-margin-right"></i>FAVORITES
+                        </a>
+
+                        <form asp-controller="Home" asp-action="Search" method="get" style="display:inline;">
+                            <input type="text" placeholder="Search teams..." name="searchTerm" />
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
             </header>
@@ -229,15 +242,14 @@
                                             <!-- Pagination -->
                                             <div class="w3-center w3-padding-32">
                                                 <div class="w3-bar">
-                                                    <a asp-controller="Home" asp-action="Page4" class="w3-bar-item w3-button w3-hover-black">«</a>
+                                                    <a asp-controller="Home" asp-action="Page6" class="w3-bar-item w3-button w3-hover-black">«</a>
                                                     <a asp-controller="Home" asp-action="Page1" class="w3-bar-item w3-button w3-hover-black">1</a>
                                                     <a asp-controller="Home" asp-action="Page2" class="w3-bar-item w3-button w3-hover-black">2</a>
                                                     <a asp-controller="Home" asp-action="Page3" class="w3-bar-item w3-button w3-hover-black">3</a>
                                                     <a asp-controller="Home" asp-action="Page4" class="w3-bar-item w3-button w3-hover-black">4</a>
                                                     <a asp-controller="Home" asp-action="Page5" class="w3-bar-item w3-button w3-hover-black">5</a>
-                                                    <a asp-controller="Home" asp-action="Page6" class="w3-bar-item w3-black w3-button">6</a>
-                                                    <a asp-controller="Home" asp-action="Page7" class="w3-bar-item w3-button w3-hover-black">7</a>
-                                                    <a asp-controller="Home" asp-action="Page6" class="w3-bar-item w3-button w3-hover-black">»</a>
+                                                    <a asp-controller="Home" asp-action="Page6" class="w3-bar-item w3-button w3-hover-black">6</a>
+                                                    <a asp-controller="Home" asp-action="Page7" class="w3-bar-item w3-black w3-button-black">7</a>                                                    
                                                 </div>
                                             </div>
 

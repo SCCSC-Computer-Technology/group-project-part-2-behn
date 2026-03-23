@@ -1,12 +1,13 @@
 ﻿@{
     Layout = null;
-    ViewData["Title"] = "All Teams Page 5";
+    ViewData["Title"] = "NBA Page 1";
 }
+
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sports Managment -Home</title>
+    <title>Sports Managment - NBA Page 1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -43,38 +44,27 @@
                     background: #ccc;
                 }
 
-            .team-link {
-                text-decoration: none;
-                color: black;
-                display: block;
-            }
     </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+    <nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
         <br>
         <div class="w3-container">
             <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
                 <i class="fa fa-remove"></i>
             </a>
-            <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
+            <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
                 <h4><b>Sports Management</b></h4>
-            </div>
 
+            </div>
             <div class="w3-bar-block">
-                <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
-                    <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
-                </a>
-                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
-                    <i class="fa fa-user fa-fw w3-margin-right"></i>USER
-                </a>
-                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
-                    <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
-                </a>
-            </div>
+                <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
+                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
+                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
 
+            </div>
             <div class="w3-panel w3-large">
                 <i class="fa fa-facebook-official w3-hover-opacity"></i>
                 <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -88,7 +78,7 @@
         <!-- Overlay effect when opening sidebar on small screens -->
         <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-        <!-- page content -->
+        <!-- !PAGE CONTENT! -->
         <div class="w3-main" style="margin-left:300px">
 
             <!-- Header -->
@@ -100,13 +90,13 @@
                     <div class="w3-section w3-bottombar w3-padding-16">
                         <span class="w3-margin-right">Filter:</span>
 
-                        <a asp-controller="Home" asp-action="Page1" class="w3-button w3-black">ALL</a>
+                        <a asp-controller="Home" asp-action="Page1" class="w3-button w3-white">ALL</a>
 
                         <a asp-controller="Home" asp-action="NFLPage1" class="w3-button w3-white">
                             <i class="fa fa-football w3-margin-right"></i>NFL
                         </a>
 
-                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-white">
+                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-black">
                             <i class="fa fa-basketball w3-margin-right"></i>NBA
                         </a>
 
@@ -124,152 +114,155 @@
 
             <!-- First Photo Grid-->
             <div class="w3-row-padding">
+                <!-- raptors -->
                 <div class="w3-third w3-container w3-margin-bottom">
-                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="20" class="team-link">
-                        <img src="~/Knicks.png" alt="Knicks" style="width:100%" class="w3-hover-opacity">
+                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="28">
+                        <img src="~/Raptors.png" alt="Raptors" style="width:100%" class="w3-hover-opacity">
                         </a>
                         <div class="w3-container w3-white">
-                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="20" class="team-link">
-                                <p><b>New York Knicks</b></p>
+                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="28" style="text-decoration:none; color:black;">
+                                <p><b>Toronto Raptors</b></p>
                             </a>
                             <p>ATLANTIC</p>
                         </div>
                     </div>
-
+                    <!-- nets -->
                     <div class="w3-third w3-container w3-margin-bottom">
-                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="6" class="team-link">
-                            <img src="~/Cavaliers.png" alt="Cavaliers" style="width:100%" class="w3-hover-opacity">
+                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3">
+                            <img src="~/Nets.png" alt="Nets" style="width:100%" class="w3-hover-opacity">
                             </a>
                             <div class="w3-container w3-white">
-                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="6" class="team-link">
-                                    <p><b>Cleveland Cavaliers</b></p>
+                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3" style="text-decoration:none; color:black;">
+                                    <p><b>Brooklyn Nets</b></p>
                                 </a>
-                                <p>CENTRAL</p>
+                                <p>ATLANTIC</p>
                             </div>
                         </div>
-
+                        <!-- celtics -->
                         <div class="w3-third w3-container w3-margin-bottom">
-                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="5" class="team-link">
-                                <img src="~/Bulls.png" alt="Bulls" style="width:100%" class="w3-hover-opacity">
+                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="2">
+                                <img src="~/Celtics.png" alt="Celtics" style="width:100%" class="w3-hover-opacity">
                                 </a>
                                 <div class="w3-container w3-white">
-                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="5" class="team-link">
-                                        <p><b>Chicago Bulls</b></p>
+                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="2" style="text-decoration:none; color:black;">
+                                        <p><b>Boston Celtics</b></p>
                                     </a>
-                                    <p>CENTRAL</p>
+                                    <p>ATLANTIC</p>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                         <!-- Second Photo Grid-->
                         <div class="w3-row-padding">
+                            <!-- 76ers -->
                             <div class="w3-third w3-container w3-margin-bottom">
-                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="9" class="team-link">
-                                    <img src="~/Pistons.png" alt="Pistons" style="width:100%" class="w3-hover-opacity">
+                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="23">
+                                    <img src="~/76ers.png" alt="76ers" style="width:100%" class="w3-hover-opacity">
                                     </a>
                                     <div class="w3-container w3-white">
-                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="9" class="team-link">
-                                            <p><b>Detroit Pistons</b></p>
+                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="23" style="text-decoration:none; color:black;">
+                                            <p><b>Philadelphia 76ers</b></p>
                                         </a>
-                                        <p>CENTRAL</p>
+                                        <p>ATLANTIC</p>
                                     </div>
                                 </div>
-
+                                <!-- knicks -->
                                 <div class="w3-third w3-container w3-margin-bottom">
-                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="12" class="team-link">
-                                        <img src="~/Pacers.png" alt="Pacers" style="width:100%" class="w3-hover-opacity">
+                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="20">
+                                        <img src="~/Knicks.png" alt="Knicks" style="width:100%" class="w3-hover-opacity">
                                         </a>
                                         <div class="w3-container w3-white">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="12" class="team-link">
-                                                <p><b>Indiana Pacers</b></p>
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="20">
+                                                <p><b>New York Knicks</b></p>
                                             </a>
-                                            <p>CENTRAL</p>
+                                            <p>ATLANTIC</p>
                                         </div>
                                     </div>
-
+                                    <!-- cavs -->
                                     <div class="w3-third w3-container w3-margin-bottom">
-                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="17" class="team-link">
-                                            <img src="~/Bucks.png" alt="Bucks" style="width:100%" class="w3-hover-opacity">
+                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="6">
+                                            <img src="~/Cavaliers.png" alt="Cavaliers" style="width:100%" class="w3-hover-opacity">
                                             </a>
                                             <div class="w3-container w3-white">
-                                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="17" class="team-link">
-                                                    <p><b>Milwaukee Bucks</b></p>
+                                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="6">
+                                                    <p><b>Cleveland Cavaliers</b></p>
                                                 </a>
                                                 <p>CENTRAL</p>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                     <!-- Third Photo Grid-->
                                     <div class="w3-row-padding">
+                                        <!-- bulls -->
                                         <div class="w3-third w3-container w3-margin-bottom">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="1" class="team-link">
-                                                <img src="~/Hawks.png" alt="Hawks" style="width:100%" class="w3-hover-opacity">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="5">
+                                                <img src="~/Bulls.png" alt="Bulls" style="width:100%" class="w3-hover-opacity">
                                                 </a>
                                                 <div class="w3-container w3-white">
-                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="1" class="team-link">
-                                                        <p><b>Atlanta Hawks</b></p>
+                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="5">
+                                                        <p><b>Chicago Bulls</b></p>
                                                     </a>
-                                                    <p>SOUTHEAST</p>
+                                                    <p>CENTRAL</p>
                                                 </div>
                                             </div>
-
+                                            <!-- pistons -->
                                             <div class="w3-third w3-container w3-margin-bottom">
-                                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="4" class="team-link">
-                                                    <img src="~/Hornets.png" alt="Hornets" style="width:100%" class="w3-hover-opacity">
+                                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="9">
+                                                    <img src="~/Pistons.png" alt="Pistons" style="width:100%" class="w3-hover-opacity">
                                                     </a>
                                                     <div class="w3-container w3-white">
-                                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="4" class="team-link">
-                                                            <p><b>Charlotte Hornets</b></p>
+                                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="9">
+                                                            <p><b>Detroit Pistons</b></p>
                                                         </a>
-                                                        <p>SOUTHEAST</p>
+                                                        <p>CENTRAL</p>
                                                     </div>
                                                 </div>
-
+                                                <!-- pacers -->
                                                 <div class="w3-third w3-container w3-margin-bottom">
-                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="16" class="team-link">
-                                                        <img src="~/Heat.png" alt="Heat" style="width:100%" class="w3-hover-opacity">
+                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="12">
+                                                        <img src="~/Pacers.png" alt="Pacers" style="width:100%" class="w3-hover-opacity">
                                                         </a>
                                                         <div class="w3-container w3-white">
-                                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="16" class="team-link">
-                                                                <p><b>Miami Heat</b></p>
+                                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="12">
+                                                                <p><b>Indiana Pacers</b></p>
                                                             </a>
-                                                            <p>SOUTHEAST</p>
+                                                            <p>CENTRAL</p>
                                                         </div>
                                                     </div>
+
                                                 </div>
 
                                                 <!-- Pagination -->
                                                 <div class="w3-center w3-padding-32">
-                                                    <div class="w3-bar">
-                                                        <a asp-controller="Home" asp-action="Page4" class="w3-bar-item w3-button w3-hover-black">«</a>
-                                                        <a asp-controller="Home" asp-action="Page1" class="w3-bar-item w3-button w3-hover-black">1</a>
-                                                        <a asp-controller="Home" asp-action="Page2" class="w3-bar-item w3-button w3-hover-black">2</a>
-                                                        <a asp-controller="Home" asp-action="Page3" class="w3-bar-item w3-button w3-hover-black">3</a>
-                                                        <a asp-controller="Home" asp-action="Page4" class="w3-bar-item w3-button w3-hover-black">4</a>
-                                                        <a asp-controller="Home" asp-action="Page5" class="w3-bar-item w3-black w3-button">5</a>
-                                                        <a asp-controller="Home" asp-action="Page6" class="w3-bar-item w3-button w3-hover-black">6</a>
-                                                        <a asp-controller="Home" asp-action="Page7" class="w3-bar-item w3-button w3-hover-black">7</a>
-                                                        <a asp-controller="Home" asp-action="Page6" class="w3-bar-item w3-button w3-hover-black">»</a>
+                                                    <div class="w3-bar">                                                        
+                                                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-bar-item w3-black w3-button">1</a>
+                                                        <a asp-controller="Home" asp-action="NBAPage2" class="w3-bar-item w3-button w3-hover-black">2</a>
+                                                        <a asp-controller="Home" asp-action="NBAPage3" class="w3-bar-item w3-button w3-hover-black">3</a>
+                                                        <a asp-controller="Home" asp-action="NBAPage4" class="w3-bar-item w3-button w3-hover-black">4</a>
+                                                        <a asp-controller="Home" asp-action="NBAPage2" class="w3-bar-item w3-button w3-hover-black">»</a>
                                                     </div>
                                                 </div>
-
                                                 <footer>
-                                                    <div class="w3-row-padding" style="background:#011d4a; color:white;">
-                                                        <p>GAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Please Gamble Responsibly. 888-789-7777/visit ccpg.org (CT),or visit www.mdgamblinghelp.org (MD). 21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH. Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms: sportsbook.draftkings.com/promos.</p>
+                                                    <div class="w3-row-padding" style=" background:#011d4a; color:white;">
+                                                        <p>GAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Please Gamble Responsibly. 888-789-7777/visit ccpg.org (CT),or visit www.mdgamblinghelp.org (MD). 21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH. Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms:  sportsbook.draftkings.com/promos.</p>
+
                                                         <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
                                                     </div>
                                                 </footer>
-
-                                                <div class="w3-row-padding" style="background:black; color:white;">
+                                                <div class="w3-row-padding" style=" background:black; color:white;">
                                                     <h5>Author: Sports Application</h5>
                                                     <p><a href="mailto:sportsapplication206@gmail.com">sportsapplication206@gmail.com</a></p>
                                                     <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
                                                 </div>
+                                                <footer>
+                                                </footer>
+
 
                                             </div>
 
                                             <script>
+                                                    // Script to open and close sidebar
                                                     function w3_open() {
                                                         document.getElementById("mySidebar").style.display = "block";
                                                         document.getElementById("myOverlay").style.display = "block";

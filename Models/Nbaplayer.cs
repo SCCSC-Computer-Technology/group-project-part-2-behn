@@ -24,4 +24,16 @@ public partial class Nbaplayer
     public string? YearsPlayed { get; set; }
 
     public virtual Nbateam Nbateam { get; set; } = null!;
+
+    public string FormattedHeight
+    {
+        get
+        {
+            if (int.TryParse(Height, out int inches))
+            {
+                return $"{inches / 12}'{inches % 12}\"";
+            }
+            return "N/A";
+        }
+    }
 }
