@@ -1,31 +1,138 @@
 ﻿@model SportsApp2.Models.CreateAccount
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Account";
+}
+
+<title>Sports Managment -Create Account</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Managment -Login</title>
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div asp-validation-summary="All"></div>
 
-<form asp-action="CreateAccount" asp-controller="Home" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+    <br>
+    <div class="w3-container">
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+            <i class="fa fa-remove"></i>
+        </a>
+        <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
+            <h4><b>Sports Management</b></h4>
 
-    <label>First Name</label>
-    <input asp-for="FirstName" />
-    <span asp-validation-for="FirstName"></span>
+        </div>
+        <div class="w3-bar-block">
+            <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
+            <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
+            <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
 
-    <label>Last Name</label>
-    <input asp-for="LastName" />
-    <span asp-validation-for="LastName"></span>
+        </div>
+        <div class="w3-panel w3-large">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+    </nav>
 
-    <label>Emaile</label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span>
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-    <label>Password</label>
-    <input asp-for="Password" type="password" />
-    <span asp-validation-for="Password"></span>
+    <div class="main-content">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="logo">
+                        <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
+                        </div>
+                        <h1>Create Account</h1>
+                        <p>Welcome to the team!</p>
+                    </div>
 
-    <label>Profile Picture</label>
-    <input asp-for="ProfileImage" type="file" />
+                    <form asp-action="CreateAccount" asp-controller="Home" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
 
-    <button type="submit">Create Account</button>
+                        <div class="form-group">
+                        <label>First Name</label>
+                        <input asp-for="FirstName" />
+                        <span asp-validation-for="FirstName"></span>
+                        </div>
 
-        @section Scripts {
-            <partial name="_ValidationScriptsPartial" />
+                        <div class="form-group">
+                        <label>Last Name</label>
+                        <input asp-for="LastName" />
+                        <span asp-validation-for="LastName"></span>
+                        </div>
+
+                        <div class="form-group">
+                        <label>Email</label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                        </div>
+
+                        <div class="form-group">
+                        <label>Password</label>
+                        <input asp-for="Password" type="password" />
+                        <span asp-validation-for="Password"></span>
+                        </div>
+
+                        <div class="form-group">
+                        <label>Profile Picture</label>
+                        <input asp-for="ProfileImage" type="file" class=" = fileInput" id="fileInput" onchange="previewFile(this)" />
+                        </div>
+                        <img id="imagePreview" src="#" alt="File preview" style="display: none; max-width: 200px;" />
+
+                        <button type="submit" class="login-btn">Create Account</button>
+
+                        @section Scripts {
+                            <partial name="_ValidationScriptsPartial" />
+                        }
+
+                        <div class="signup-link">
+                            <p>Already have an account? <a asp-controller="Home" asp-action="Login">Login</a></p>
+                        </div>
+                    </form>
+                 </div>
+             </div>
+        </div>
+        <script>    
+            function previewFile(input) {
+    var file = input.files[0];
+    var reader = new FileReader();
+    var imgPreview = document.getElementById('imagePreview');
+   
+
+    reader.onload = function(e) {
+        if (file.type.startsWith('image/'))
+        {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block';
+            pdfPreview.style.display = 'none';
         }
-</form>
+        else 
+        {
+            // Handle other file types or hide previews
+            imgPreview.style.display = 'none';
+            pdfPreview.style.display = 'none';
+            alert('Preview not available for this file type.');
+        }
+    };
+
+    if (file) {
+        reader.readAsDataURL(file); // Read file as Data URL
+    } else {
+        // Clear previews if no file is selected
+        imgPreview.src = '#';
+        imgPreview.style.display = 'none';
+        pdfPreview.data = '#';
+        pdfPreview.style.display = 'none';
+    }
+}
+        </script>
