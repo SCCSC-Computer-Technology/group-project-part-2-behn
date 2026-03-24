@@ -1,0 +1,31 @@
+﻿@model SportsApp2.Models.CreateAccount
+<div asp-validation-summary="All"></div>
+
+<form asp-action="CreateAccount" asp-controller="Home" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <label>First Name</label>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span>
+
+    <label>Last Name</label>
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span>
+
+    <label>Emaile</label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+
+    <label>Password</label>
+    <input asp-for="Password" type="password" />
+    <span asp-validation-for="Password"></span>
+
+    <label>Profile Picture</label>
+    <input asp-for="ProfileImage" type="file" />
+
+    <button type="submit">Create Account</button>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+</form>
