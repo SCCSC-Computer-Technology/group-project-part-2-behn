@@ -1,0 +1,199 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "NFL Page 4";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sports Managment -Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: "Raleway", sans-serif;
+            }
+
+            .topnav .search-container {
+                float: right;
+            }
+
+            .topnav input[type=text] {
+                padding: 6px;
+                margin-top: 8px;
+                font-size: 17px;
+                border: none;
+            }
+
+            .topnav .search-container button {
+                float: right;
+                padding: 6px 10px;
+                margin-top: 8px;
+                margin-right: 16px;
+                background: #ddd;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+                .topnav .search-container button:hover {
+                    background: #ccc;
+                }
+    </style>
+</head>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+    <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+        <br>
+        <div class="w3-container">
+            <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
+                <h4><b>Sports Management</b></h4>
+            </div>
+
+            <div class="w3-bar-block">
+                <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
+                    <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
+                </a>
+                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-user fa-fw w3-margin-right"></i>USER
+                </a>
+                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
+                </a>
+            </div>
+
+            <div class="w3-panel w3-large">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+        </nav>
+
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+        <div class="w3-main" style="margin-left:300px">
+
+            <header id="Sports Management">
+                <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+                <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+                <div class="w3-container">
+                    <h1><b>Sports Management</b></h1>
+                    <div class="w3-section w3-bottombar w3-padding-16">
+                        <span class="w3-margin-right">Filter:</span>
+
+                        <a asp-controller="Home" asp-action="Page1" class="w3-button w3-white">ALL</a>
+
+                        <a asp-controller="Home" asp-action="NFLPage1" class="w3-button w3-black">
+                            <i class="fa fa-football w3-margin-right"></i>NFL
+                        </a>
+
+                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-white">
+                            <i class="fa fa-basketball w3-margin-right"></i>NBA
+                        </a>
+
+                        <a asp-controller="Home" asp-action="Favorites" class="w3-button w3-white">
+                            <i class="fa fa-star w3-margin-right"></i>FAVORITES
+                        </a>
+
+                        <form asp-controller="Home" asp-action="Search" method="get" style="display:inline;">
+                            <input type="text" placeholder="Search teams..." name="searchTerm" />
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </header>
+
+            <!-- First Photo Grid -->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom">
+                    <img src="~/Broncos.png" alt="Broncos" style="width:100%" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>Denver Broncos</b></p>
+                            <p>AFC WEST</p>
+                        </div>
+                    </div>
+
+                    <div class="w3-third w3-container w3-margin-bottom">
+                        <img src="~/Saints.png" alt="Saints" style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>New Orleans Saints</b></p>
+                                <p>NFC SOUTH</p>
+                            </div>
+                        </div>
+
+                        <div class="w3-third w3-container">
+                            <img src="~/Patriots.png" alt="Patriots" style="width:100%" class="w3-hover-opacity">
+                                <div class="w3-container w3-white">
+                                    <p><b>New England Patriots</b></p>
+                                    <p>AFC EAST</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Second Photo Grid -->
+                        <div class="w3-row-padding">
+                            <div class="w3-third w3-container w3-margin-bottom">
+                                <img src="~/Titans.png" alt="Titans" style="width:100%" class="w3-hover-opacity">
+                                    <div class="w3-container w3-white">
+                                        <p><b>Tennessee Titans</b></p>
+                                        <p>AFC SOUTH</p>
+                                    </div>
+                                </div>
+
+                                <div class="w3-third w3-container w3-margin-bottom">
+                                    <img src="~/Seahawks.png" alt="Seahawks" style="width:100%" class="w3-hover-opacity">
+                                        <div class="w3-container w3-white">
+                                            <p><b>Seattle Seahawks</b></p>
+                                            <p>NFC WEST</p>
+                                        </div>
+                                    </div>
+                                    
+                         </div>                                    
+
+                                                <div class="w3-center w3-padding-32">
+                                                    <div class="w3-bar">
+                                                        <a asp-controller="Home" asp-action="NFLPage3" class="w3-bar-item w3-button w3-hover-black">«</a>
+                                                        <a asp-controller="Home" asp-action="NFLPage1" class="w3-bar-item w3-button w3-hover-black">1</a>
+                                                        <a asp-controller="Home" asp-action="NFLPage2" class="w3-bar-item w3-button w3-hover-black">2</a>
+                                                        <a asp-controller="Home" asp-action="NFLPage3" class="w3-bar-item w3-button w3-hover-black">3</a>
+                                                        <a asp-controller="Home" asp-action="NFLPage4" class="w3-bar-item w3-black w3-button-black">4</a>
+                                                    </div>
+                                                </div>
+
+                                                <footer>
+                                                    <div class="w3-row-padding" style="background:#011d4a; color:white;">
+                                                        <p>GAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Please Gamble Responsibly. 888-789-7777/visit ccpg.org (CT),or visit www.mdgamblinghelp.org (MD). 21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH. Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms: sportsbook.draftkings.com/promos.</p>
+                                                        <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                                                    </div>
+                                                </footer>
+
+                                                <div class="w3-row-padding" style="background:black; color:white;">
+                                                    <h5>Author: Sports Application</h5>
+                                                    <p><a href="mailto:sportsapplication206@gmail.com">sportsapplication206@gmail.com</a></p>
+                                                    <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                    function w3_open() {
+                                                        document.getElementById("mySidebar").style.display = "block";
+                                                        document.getElementById("myOverlay").style.display = "block";
+                                                    }
+
+                                                    function w3_close() {
+                                                        document.getElementById("mySidebar").style.display = "none";
+                                                        document.getElementById("myOverlay").style.display = "none";
+                                                    }
+                                            </script>
+
+                                        </body>
+                                    </html>

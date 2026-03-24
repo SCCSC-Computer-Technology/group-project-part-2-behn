@@ -1,6 +1,6 @@
 ﻿@{
     Layout = null;
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "All Teams Page 3";
 }
 
 
@@ -63,10 +63,25 @@
                     <h1><b>Sports Management</b></h1>
                     <div class="w3-section w3-bottombar w3-padding-16">
                         <span class="w3-margin-right">Filter:</span>
-                        <button class="w3-button w3-black">ALL</button>
-                        <button class="w3-button w3-white"><i class="fa fa-football w3-margin-right"></i>NFL</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-basketball w3-margin-right"></i>NBA</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-star w3-margin-right"></i>FAVORITES</button>
+
+                        <a asp-controller="Home" asp-action="Page1" class="w3-button w3-black">ALL</a>
+
+                        <a asp-controller="Home" asp-action="NFLPage1" class="w3-button w3-white">
+                            <i class="fa fa-football w3-margin-right"></i>NFL
+                        </a>
+
+                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-white">
+                            <i class="fa fa-basketball w3-margin-right"></i>NBA
+                        </a>
+
+                        <a asp-controller="Home" asp-action="Favorites" class="w3-button w3-white">
+                            <i class="fa fa-star w3-margin-right"></i>FAVORITES
+                        </a>
+
+                        <form asp-controller="Home" asp-action="Search" method="get" style="display:inline;">
+                            <input type="text" placeholder="Search teams..." name="searchTerm" />
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
             </header>
@@ -156,7 +171,7 @@
                                                 <div class="w3-center w3-padding-32">
                                                     <div class="w3-bar">
                                                         <a asp-controller="Home" asp-action="Page2" class="w3-bar-item w3-button w3-hover-black">«</a>
-                                                        <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button w3-hover-black">1</a>
+                                                        <a asp-controller="Home" asp-action="Page1" class="w3-bar-item w3-button w3-hover-black">1</a>
                                                         <a asp-controller="Home" asp-action="Page2" class="w3-bar-item w3-button w3-hover-black">2</a>
                                                         <a asp-controller="Home" asp-action="Page3" class="w3-bar-item w3-black w3-button">3</a>
                                                         <a asp-controller="Home" asp-action="Page4" class="w3-bar-item w3-button w3-hover-black">4</a>
