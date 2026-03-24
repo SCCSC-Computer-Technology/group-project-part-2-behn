@@ -26,5 +26,17 @@ namespace SportsApp2.Controllers
 
             return View(team);
         }
+        
+        //Nfl filtering for players
+        public IActionResult NFLTeamPlayers(int id)
+        {
+            var team = _context.Nflteams
+                .Include(t => t.Nflplayers)
+                .FirstOrDefault(t => t.NflteamId == id);
+
+            return View(team);
+        }
+
+
     }
 }
