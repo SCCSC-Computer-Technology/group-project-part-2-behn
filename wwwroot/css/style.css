@@ -12,6 +12,27 @@ body {
     min-height: 100vh;
     line-height: 1.6;
 }
+
+.fileInput::file-selector-button {
+    background: #083d77;
+    color: #ffffff;
+    padding: 10px 20px; /* Some padding */
+    border: none; /* Remove default border */
+    border-radius: 50px;
+    cursor: pointer; /* Change cursor on hover */
+
+    -webkit-appearance: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+    .fileInput::file-selector-button:hover {
+        background: #5998c5;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(203, 238, 243, 0.3);
+    }
+
 .main-content {
     margin-left: 300px;
     min-height: 100vh;
@@ -100,8 +121,8 @@ body {
 
         .form-group input:focus {
             background: #ffffff;
-            border-color: #1DB954;
-            box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.1);
+            border-color: #083d77;
+            box-shadow: 0 0 0 3px rgba(60, 135, 217, 0.1);
         }
 
         .form-group input::placeholder {
