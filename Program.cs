@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(Directory.GetCurrentDirectory(), "App_Data")); //makes |DataDirectory| point to the App_Data folder
+
 builder.Services.AddDbContext<BEHNDatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BEHNDatabase")));
 
