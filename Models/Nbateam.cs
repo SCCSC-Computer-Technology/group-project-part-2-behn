@@ -28,4 +28,5 @@ public partial class Nbateam
     public virtual ICollection<Nbaschedule> NbascheduleAwayTeams { get; set; } = new List<Nbaschedule>();
 
     public virtual ICollection<Nbaschedule> NbascheduleHomeTeams { get; set; } = new List<Nbaschedule>();
+    public virtual NbaseasonStat NbaseasonStat { get; set; }
 }
