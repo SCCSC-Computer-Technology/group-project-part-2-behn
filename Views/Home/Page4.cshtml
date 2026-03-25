@@ -52,58 +52,75 @@
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-    <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
-        <br>
-        <div class="w3-container">
-            <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-                <i class="fa fa-remove"></i>
-            </a>
-            <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
-                <h4><b>Sports Management</b></h4>
-            </div>
-
-            <div class="w3-bar-block">
-                <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
-                    <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
+    <nav  <!-- Sidebar/menu -->
+        <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+            <br>
+            <div class="w3-container">
+                <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+                    <i class="fa fa-remove"></i>
                 </a>
-                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
-                    <i class="fa fa-user fa-fw w3-margin-right"></i>USER
-                </a>
-                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
-                    <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
-                </a>
-            </div>
-
-            <div class="w3-panel w3-large">
-                <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                <i class="fa fa-instagram w3-hover-opacity"></i>
-                <i class="fa fa-snapchat w3-hover-opacity"></i>
-                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-                <i class="fa fa-twitter w3-hover-opacity"></i>
-                <i class="fa fa-linkedin w3-hover-opacity"></i>
-            </div>
-        </nav>
-
-        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-        <div class="w3-main" style="margin-left:300px">
-
-            <header id="Sports Management">
-                <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
-                <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-                <div class="w3-container">
-                    <h1><b>Sports Management</b></h1>
-                    <div class="w3-section w3-bottombar w3-padding-16">
-                        <span class="w3-margin-right">Filter:</span>
-                        <button class="w3-button w3-black">ALL</button>
-                        <button class="w3-button w3-white"><i class="fa fa-football w3-margin-right"></i>NFL</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-basketball w3-margin-right"></i>NBA</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-star w3-margin-right"></i>FAVORITES</button>
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
+                <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
+                    <h4><b>Sports Management</b></h4>
                 </div>
-            </header>
+
+                <div class="w3-bar-block">
+                    <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
+                        <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
+                    </a>
+                    <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                        <i class="fa fa-user fa-fw w3-margin-right"></i>USER
+                    </a>
+                    <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                        <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
+                    </a>
+                </div>
+
+                <div class="w3-panel w3-large">
+                    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                    <i class="fa fa-instagram w3-hover-opacity"></i>
+                    <i class="fa fa-snapchat w3-hover-opacity"></i>
+                    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                    <i class="fa fa-twitter w3-hover-opacity"></i>
+                    <i class="fa fa-linkedin w3-hover-opacity"></i>
+                </div>
+            </nav>
+
+            <!-- Overlay effect when opening sidebar on small screens -->
+            <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+            <!-- !PAGE CONTENT! -->
+            <div class="w3-main" style="margin-left:300px">
+
+                <!-- Header -->
+                <header id="Sports Management">
+                    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+                    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+                    <div class="w3-container">
+                        <h1><b>Sports Management</b></h1>
+                        <div class="w3-section w3-bottombar w3-padding-16">
+                            <span class="w3-margin-right">Filter:</span>
+
+                            <a asp-controller="Home" asp-action="Page1" class="w3-button w3-black">ALL</a>
+
+                            <a asp-controller="Home" asp-action="NFLPage1" class="w3-button w3-white">
+                                <i class="fa fa-football w3-margin-right"></i>NFL
+                            </a>
+
+                            <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-white">
+                                <i class="fa fa-basketball w3-margin-right"></i>NBA
+                            </a>
+
+                            <a asp-controller="Home" asp-action="Favorites" class="w3-button w3-white">
+                                <i class="fa fa-star w3-margin-right"></i>FAVORITES
+                            </a>
+
+                            <form asp-controller="Home" asp-action="Search" method="get" style="display:inline;">
+                                <input type="text" placeholder="Search teams..." name="searchTerm" />
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </header>
 
             <!-- First Photo Grid -->
             <div class="w3-row-padding">
