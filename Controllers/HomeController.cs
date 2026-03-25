@@ -4,6 +4,9 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
 using Microsoft.EntityFrameworkCore;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
+
 
 namespace SportsApp2.Controllers
 {
@@ -171,11 +174,17 @@ namespace SportsApp2.Controllers
         }
 
         private readonly BEHNDatabaseContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public HomeController(BEHNDatabaseContext context)
+
+
+        public HomeController(BEHNDatabaseContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
+
+  
 
         //This for login
         public IActionResult Login()
@@ -265,6 +274,73 @@ namespace SportsApp2.Controllers
             return RedirectToAction("User");
         }
 
+        public IActionResult UpcomingEventsHTML()
+        {
+            List<UpcomingEvents> events = new List<UpcomingEvents>();
 
+            string filePath = Path.Combine(_environment.ContentRootPath, "Data", "AllUpcomingEvents.xlsx");
+
+            if (System.IO.File.Exists(filePath))
+            {
+                using (var workbook = new XLWorkbook(filePath))
+                {
+                    var worksheet = workbook.Worksheet(1);
+                    var rows = worksheet.RowsUsed().Skip(1);
+
+                    foreach (var row in rows)
+                    {
+                        
+                        DateTime eventDate;
+
+                        
+                        bool validDate = DateTime.TryParse(row.Cell(6).GetValue<string>(), out eventDate);
+
+                        if (validDate)
+                        {
+                            events.Add(new UpcomingEvents
+                            {
+                                Time = row.Cell(1).GetValue<string>(),
+                                Team1 = row.Cell(2).GetValue<string>(),
+                                Team2 = row.Cell(3).GetValue<string>(),
+                                whereToListen = row.Cell(4).GetValue<string>(),
+                                Arena = row.Cell(5).GetValue<string>(),
+                                Date = eventDate,
+                                Category = row.Cell(7).GetValue<string>()
+                            });
+                        }
+
+                    }
+                }
+            }
+
+            var upcomingEvents = events
+            .Where(e =>
+            {
+                string cleanedTime = e.Time.Replace("ET", "").Trim();
+
+                if (DateTime.TryParse($"{e.Date:yyyy-MM-dd} {cleanedTime}", out DateTime eventDateTime))
+                {
+                    return eventDateTime >= DateTime.Now;
+                }
+
+                return false;
+            })
+            .OrderBy(e =>
+            {
+                string cleanedTime = e.Time.Replace("ET", "").Trim();
+
+                if (DateTime.TryParse($"{e.Date:yyyy-MM-dd} {cleanedTime}", out DateTime eventDateTime))
+                {
+                    return eventDateTime;
+                }
+
+                return DateTime.MaxValue;
+            })
+            .ToList();
+
+        return View(upcomingEvents);
+       }
     }
 }
+
+
