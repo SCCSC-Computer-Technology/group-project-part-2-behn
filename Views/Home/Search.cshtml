@@ -1,0 +1,41 @@
+﻿@model SportsApp2.Models.SearchResultsViewModel
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="w3-container w3-padding-32">
+    <a asp-controller="Home" asp-action="Page1" class="w3-button w3-black w3-margin-bottom">Back</a>
+
+    <h1>Search Results for "@ViewBag.SearchTerm"</h1>
+
+    <h2>NBA Teams</h2>
+    @if (Model.NbaTeams.Any())
+    {
+        <ul>
+            @foreach (var team in Model.NbaTeams)
+            {
+                <li>@team.TeamName</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No NBA teams found.</p>
+    }
+
+    <h2>NFL Teams</h2>
+    @if (Model.NflTeams.Any())
+    {
+        <ul>
+            @foreach (var team in Model.NflTeams)
+            {
+                <li>@team.TeamName</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No NFL teams found.</p>
+    }
+</div>

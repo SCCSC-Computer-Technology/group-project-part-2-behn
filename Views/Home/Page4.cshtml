@@ -42,6 +42,12 @@
                 .topnav .search-container button:hover {
                     background: #ccc;
                 }
+
+            .team-link {
+                text-decoration: none;
+                color: black;
+                display: block;
+            }
     </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -102,25 +108,37 @@
             <!-- First Photo Grid -->
             <div class="w3-row-padding">
                 <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="~/Broncos.png" alt="Broncos" style="width:100%" class="w3-hover-opacity">
+                    <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="10" class="team-link">
+                        <img src="~/Broncos.png" alt="Broncos" style="width:100%" class="w3-hover-opacity">
+                        </a>
                         <div class="w3-container w3-white">
-                            <p><b>Denver Broncos</b></p>
+                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="10" class="team-link">
+                                <p><b>Denver Broncos</b></p>
+                            </a>
                             <p>AFC WEST</p>
                         </div>
                     </div>
 
                     <div class="w3-third w3-container w3-margin-bottom">
-                        <img src="~/Saints.png" alt="Saints" style="width:100%" class="w3-hover-opacity">
+                        <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="23" class="team-link">
+                            <img src="~/Saints.png" alt="Saints" style="width:100%" class="w3-hover-opacity">
+                            </a>
                             <div class="w3-container w3-white">
-                                <p><b>New Orleans Saints</b></p>
+                                <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="23" class="team-link">
+                                    <p><b>New Orleans Saints</b></p>
+                                </a>
                                 <p>NFC SOUTH</p>
                             </div>
                         </div>
 
-                        <div class="w3-third w3-container">
-                            <img src="~/Patriots.png" alt="Patriots" style="width:100%" class="w3-hover-opacity">
+                        <div class="w3-third w3-container w3-margin-bottom">
+                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="22" class="team-link">
+                                <img src="~/Patriots.png" alt="Patriots" style="width:100%" class="w3-hover-opacity">
+                                </a>
                                 <div class="w3-container w3-white">
-                                    <p><b>New England Patriots</b></p>
+                                    <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="22" class="team-link">
+                                        <p><b>New England Patriots</b></p>
+                                    </a>
                                     <p>AFC EAST</p>
                                 </div>
                             </div>
@@ -129,27 +147,35 @@
                         <!-- Second Photo Grid -->
                         <div class="w3-row-padding">
                             <div class="w3-third w3-container w3-margin-bottom">
-                                <img src="~/Titans.png" alt="Titans" style="width:100%" class="w3-hover-opacity">
+                                <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="31" class="team-link">
+                                    <img src="~/Titans.png" alt="Titans" style="width:100%" class="w3-hover-opacity">
+                                    </a>
                                     <div class="w3-container w3-white">
-                                        <p><b>Tennessee Titans</b></p>
+                                        <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="31" class="team-link">
+                                            <p><b>Tennessee Titans</b></p>
+                                        </a>
                                         <p>AFC SOUTH</p>
                                     </div>
                                 </div>
 
                                 <div class="w3-third w3-container w3-margin-bottom">
-                                    <img src="~/Seahawks.png" alt="Seahawks" style="width:100%" class="w3-hover-opacity">
+                                    <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="29" class="team-link">
+                                        <img src="~/Seahawks.png" alt="Seahawks" style="width:100%" class="w3-hover-opacity">
+                                        </a>
                                         <div class="w3-container w3-white">
-                                            <p><b>Seattle Seahawks</b></p>
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="29" class="team-link">
+                                                <p><b>Seattle Seahawks</b></p>
+                                            </a>
                                             <p>NFC WEST</p>
                                         </div>
                                     </div>
 
                                     <div class="w3-third w3-container">
-                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3">
+                                        <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="28">
                                             <img src="~/Raptors.png" alt="Raptors" style="width:100%" class="w3-hover-opacity">
                                             </a>
                                             <div class="w3-container w3-white">
-                                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3" style="text-decoration:none; color:black;">
+                                                <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="28" style="text-decoration:none; color:black;">
                                                     <p><b>Toronto Raptors</b></p>
                                                 </a>
                                                 <p>ATLANTIC</p>
@@ -160,11 +186,11 @@
                                     <!-- Third Photo Grid -->
                                     <div class="w3-row-padding">
                                         <div class="w3-third w3-container w3-margin-bottom">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="1">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3">
                                                 <img src="~/Nets.png" alt="Nets" style="width:100%" class="w3-hover-opacity">
                                                 </a>
                                                 <div class="w3-container w3-white">
-                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="1" style="text-decoration:none; color:black;">
+                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3" style="text-decoration:none; color:black;">
                                                         <p><b>Brooklyn Nets</b></p>
                                                     </a>
                                                     <p>ATLANTIC</p>
@@ -184,11 +210,11 @@
                                                 </div>
 
                                                 <div class="w3-third w3-container">
-                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="4">
+                                                    <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="23">
                                                         <img src="~/76ers.png" alt="76ers" style="width:100%" class="w3-hover-opacity">
                                                         </a>
                                                         <div class="w3-container w3-white">
-                                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="4" style="text-decoration:none; color:black;">
+                                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="23" style="text-decoration:none; color:black;">
                                                                 <p><b>Philadelphia 76ers</b></p>
                                                             </a>
                                                             <p>ATLANTIC</p>
@@ -199,7 +225,7 @@
                                                 <div class="w3-center w3-padding-32">
                                                     <div class="w3-bar">
                                                         <a asp-controller="Home" asp-action="Page3" class="w3-bar-item w3-button w3-hover-black">«</a>
-                                                        <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button w3-hover-black">1</a>
+                                                        <a asp-controller="Home" asp-action="Page1" class="w3-bar-item w3-button w3-hover-black">1</a>
                                                         <a asp-controller="Home" asp-action="Page2" class="w3-bar-item w3-button w3-hover-black">2</a>
                                                         <a asp-controller="Home" asp-action="Page3" class="w3-bar-item w3-button w3-hover-black">3</a>
                                                         <a asp-controller="Home" asp-action="Page4" class="w3-bar-item w3-black w3-button">4</a>

@@ -16,6 +16,13 @@ namespace SportsApp2.Controllers
         {
             return View();
         }
+
+        public IActionResult Page1()
+        {
+            return View();
+        }
+
+
         public IActionResult Page2()
         {
             return View();
@@ -44,6 +51,72 @@ namespace SportsApp2.Controllers
         public IActionResult Page7()
         {
             return View();
+        }
+
+        public IActionResult NBAPage1()
+        {
+            return View();
+        }
+
+        public IActionResult NBAPage2()
+        {
+            return View();
+        }
+
+        public IActionResult NBAPage3()
+        {
+            return View();
+        }
+
+        public IActionResult NBAPage4()
+        {
+            return View();
+        }
+
+        public IActionResult NFLPage1()
+        {
+            return View();
+        }
+
+        public IActionResult NFLPage2()
+        {
+            return View();
+        }
+
+        public IActionResult NFLPage3()
+        {
+            return View();
+        }
+
+        public IActionResult NFLPage4()
+        {
+            return View();
+        }
+
+        public IActionResult Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return RedirectToAction("Page1");
+            }
+
+            var nbaTeams = _context.Nbateams
+                .Where(t => t.TeamName.Contains(searchTerm))
+                .ToList();
+
+            var nflTeams = _context.Nflteams
+                .Where(t => t.TeamName.Contains(searchTerm))
+                .ToList();
+
+            ViewBag.SearchTerm = searchTerm;
+
+            var model = new SearchResultsViewModel
+            {
+                NbaTeams = nbaTeams,
+                NflTeams = nflTeams
+            };
+
+            return View(model);
         }
 
         //This for login
