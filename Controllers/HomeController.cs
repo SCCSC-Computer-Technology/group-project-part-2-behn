@@ -1,11 +1,12 @@
+using Azure.Core;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SportsApp2.Models;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
-using Microsoft.EntityFrameworkCore;
-using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Drawing.Diagrams;
 
 
 namespace SportsApp2.Controllers
@@ -184,7 +185,11 @@ namespace SportsApp2.Controllers
             _environment = environment;
         }
 
-  
+
+        public IActionResult Back()
+        {
+            return Redirect(Request.Headers.Referer.ToString());
+        }
 
         //This for login
         public IActionResult Login()
