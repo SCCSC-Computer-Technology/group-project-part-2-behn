@@ -11,7 +11,9 @@
         public DateTime Date { get; set; }
 
         public string Category { get; set; }
-        
-        
+
+        public bool IsHidden { get; set; } = false;
+
+
     }
 }
