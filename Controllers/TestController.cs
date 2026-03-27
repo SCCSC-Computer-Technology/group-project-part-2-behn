@@ -108,11 +108,66 @@ namespace SportsApp2.Controllers
                 { "Commanders", "w3-highway-red" }
             };
 
+            if (team == null)
+            {
+                return Content("Team not found.");
+            }
+
             ViewBag.TeamColors = teamColors;
 
             return View(team);
         }
 
+        public IActionResult NBATeamStats(int id)
+        {
+            var team = _context.Nbateams
+                .Include(t => t.NbaseasonStat)
+                .FirstOrDefault(t => t.NbateamId == id);
 
+            var teamColors = new Dictionary<string, string>
+            {
+                { "Lakers", "w3-deep-purple" },
+                { "Bulls", "w3-vivid-red" },
+                { "Celtics", "w3-green" },
+                { "Heat", "w3-crimson" },
+                { "Warriors", "w3-amber" },
+                { "Knicks", "w3-orange" },
+                { "Nets", "w3-black" },
+                { "Mavericks", "w3-light-blue" },
+                { "Rockets", "w3-food-cherry" },
+                { "Clippers", "w3-blue-grey" },
+                { "Thunder", "w3-light-blue" },
+                { "Suns", "w3-orange" },
+                { "Kings", "w3-deep-purple" },
+                { "Timberwolves", "w3-info" },
+                { "Spurs", "w3-black" },
+                { "Pelicans", "w3-food-coffee" },
+                { "Hornets", "w3-vivid-greenish-blue" },
+                { "Pistons", "w3-blue" },
+                { "Pacers", "w3-vivid-yellow" },
+                { "Raptors", "w3-highway-red" },
+                { "76ers", "w3-signal-blue" },
+                { "Bucks", "w3-signal-green" },
+                { "Magic", "w3-blue" },
+                { "Jazz", "w3-deep-purple" },
+                { "Wizards", "w3-food-strawberry" },
+                { "Hawks", "w3-red" },
+                { "Blazers", "w3-red" },
+                { "Cavaliers", "w3-food-wine" },
+                { "Grizzlies", "w3-asphalt" },
+                { "Nuggets", "w3-amber" }
+            };
+
+            ViewBag.TeamColors = teamColors;
+
+
+
+            if (team == null)
+            {
+                return Content("Team not found.");
+            }
+
+            return View(team);
+        }
     }
 }
