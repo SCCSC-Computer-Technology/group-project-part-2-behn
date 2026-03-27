@@ -19,141 +19,141 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = SportsApp2
 build_property.RootNamespace = SportsApp2
-build_property.ProjectDir = C:\Users\briea\OneDrive\Documents\GitHub\group-project-part-2-behn\
+build_property.ProjectDir = C:\Users\masly\OneDrive\Documents\GitHub\group-project-part-2-behn\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\briea\OneDrive\Documents\GitHub\group-project-part-2-behn
+build_property.MSBuildProjectDirectory = C:\Users\masly\OneDrive\Documents\GitHub\group-project-part-2-behn
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Contact.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/CreateAccount.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/CreateAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVBY2NvdW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/EditAccount.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/EditAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0QWNjb3VudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Index.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Login.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage1.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOQkFQYWdlMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage2.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOQkFQYWdlMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage3.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOQkFQYWdlMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage4.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NBAPage4.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOQkFQYWdlNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage1.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxORkxQYWdlMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage2.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxORkxQYWdlMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage3.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxORkxQYWdlMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage4.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/NFLPage4.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxORkxQYWdlNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page1.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page2.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page3.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page4.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page4.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page5.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page5.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlNS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page6.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page6.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlNi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page7.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Page7.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlNy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Privacy.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Search.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/UpcomingEventsHTML.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/UpcomingEventsHTML.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGNvbWluZ0V2ZW50c0hUTUwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/User.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Home/User.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Shared/Error.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Test/NbaTeams.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Test/NbaTeams.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxOYmFUZWFtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Test/NflTeamPlayers.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Test/NflTeamPlayers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxOZmxUZWFtUGxheWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Test/TeamPlayers.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Test/TeamPlayers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxUZWFtUGxheWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/_ViewImports.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/_ViewStart.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/briea/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Shared/_Layout.cshtml]
+[C:/Users/masly/OneDrive/Documents/GitHub/group-project-part-2-behn/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ccw8yg6qg1
