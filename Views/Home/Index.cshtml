@@ -1,15 +1,35 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    Layout = null;
 }
 
-<div class="d-flex justify-content-center align-items-center" style="height:40vh;">
-    <div class="text-center">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+</head>
+<body>
+    <div class="home-hero">
 
-        <h1 class="mb-4">Welcome to Sports Managment!</h1>
+        <div class="top-header">            
+            <h1>Welcome to the BEHN Sports Web App!</h1>        
+        </div>
 
-        <a asp-controller="Home" asp-action="Page1" class="btn btn-primary btn-lg">
-            Enter
-        </a>
+        <div class="overlay">
+            <a asp-controller="Home" asp-action="Login" class="btn btn-light m-2">
+                Log In
+            </a>
+
+            <a asp-controller="Home" asp-action="CreateAccount" class="btn btn-light m-2">
+                Register
+            </a>
+        </div>
 
     </div>
-</div>
+</body>
+</html>

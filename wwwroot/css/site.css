@@ -18,6 +18,7 @@ html {
 }
 
 body {
+  margin: 0;
   margin-bottom: 60px;
 }
 
@@ -29,3 +30,51 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.home-hero {
+    background-image: url('/images/sportsbg.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.home-hero {
+    position: relative;
+}
+
+.home-hero .top-header {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+    .home-hero .top-header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 8px black;
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+        text-shadow: 
+            0 0 5px rgba(255,255,255,0.3), 
+            0 0 10px rgba(255,255,255,0.2), 
+            2px 2px 8px black;
+    }
+
+
