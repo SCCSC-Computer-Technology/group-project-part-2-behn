@@ -2,6 +2,10 @@
 
 @{
     ViewData["Title"] = Model.TeamName + " Players";
+    var teamName = Model.TeamName.Split(' ').Last();
+    //taking last part of team name for finding matching logo
+    var logoImage = teamName + ".png";
+    var teamColor = ViewBag.TeamColors.ContainsKey(teamName) ? ViewBag.TeamColors[teamName] : "w3-grey";
 }
 
 <!DOCTYPE html>
@@ -10,24 +14,45 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+            
+            .w3-card {
+                border-radius: 15px; 
+            }
+
+          
+            .badge {
+                font-size: 1.25em; 
+                padding: 0.5em 1em; 
+            }
+            .player-name {
+            text-align: center;
+        }
+    </style>
 </head>
 <body class="w3-light-grey">
 
     <div class="w3-container w3-padding-32">
         <a href="##" onClick="history.go(-1); return false;" class="w3-button w3-black w3-margin-bottom">Back</a>
+        <!--logo--> 
+        <div class="w3-center">
+            <img src="~/@logoImage" alt="@Model.TeamName Logo" class="img-fluid mx-auto d-block" style="max-width: 600px;">
+            </div>
+
 
         <h1>@Model.TeamName Players</h1>
 
         <div class="w3-row-padding">
             @foreach (var player in Model.Nbaplayers)
             {
+
                 <div class="w3-third w3-margin-bottom">
-                    <div class="w3-card w3-white w3-padding">                        
-                        <h3>@player.PlayerName</h3>
-                        <p><b>Position:</b> @player.Position</p>
-                        <p><b>Height:</b> @player.FormattedHeight</p>
-                        <p><b>Weight:</b> @player.Weight lbs</p>
-                        <p><b>College:</b> @player.College</p>
+                    <div class="w3-card @teamColor w3-padding">                          
+                        <h3 class="player-name">@player.PlayerName</h3>
+                        <p><span class="badge badge-danger">Position: @player.Position</span></p>
+                        <p><span class="badge badge-success">Height: @player.FormattedHeight</span></p>
+                        <p><span class="badge badge-info">Weight: @player.Weight lbs</span></p>
                     </div>
                 </div>
             }
