@@ -4,7 +4,6 @@ wwwroot\Basketball.png
 wwwroot\Bears.png
 wwwroot\Bengals.png
 wwwroot\Bills.png
-wwwroot\Blazers.png
 wwwroot\Broncos.png
 wwwroot\Browns.png
 wwwroot\Buccaneers.png
@@ -27,14 +26,13 @@ wwwroot\Falcons.png
 wwwroot\favicon.ico
 wwwroot\Football.png
 wwwroot\Giants.png
-wwwroot\Green Bay.png
+wwwroot\Packers.png
 wwwroot\Grizzlies.png
 wwwroot\Hawks.png
 wwwroot\Heat.png
 wwwroot\Hornets.png
 wwwroot\images\2d0d6bbd-8df3-4728-bf47-addb4a7453e0.png
 wwwroot\images\313aba08-9791-4d67-8d14-952f0162b7bf.png
-wwwroot\images\3b3c87bd-0439-45b1-aa04-33b3eaa5b43b.JPG
 wwwroot\images\5242d011-0ab7-4c3f-9653-370425f50d33.JPG
 wwwroot\images\69fd4321-b77d-4a9f-81a4-3ca002126c12.gif
 wwwroot\images\6daa51c1-cc16-484a-9bea-225a37bb2a74.JPG
@@ -134,9 +132,11 @@ wwwroot\Texans.png
 wwwroot\Thunder.png
 wwwroot\Timberwolves.png
 wwwroot\Titans.png
+wwwroot\Blazers.png
 wwwroot\Vikings.png
 wwwroot\Warriors.png
 wwwroot\Wizards.png
+wwwroot\images\3b3c87bd-0439-45b1-aa04-33b3eaa5b43b.JPG
 C:\Users\thesh\Documents\GitHub\group-project-part-2-behn\wwwroot\css\site.css
 C:\Users\thesh\Documents\GitHub\group-project-part-2-behn\wwwroot\css\style.css
 C:\Users\thesh\Documents\GitHub\group-project-part-2-behn\wwwroot\favicon.ico

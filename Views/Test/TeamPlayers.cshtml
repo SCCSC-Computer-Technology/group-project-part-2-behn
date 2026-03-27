@@ -29,6 +29,9 @@
             .player-name {
             text-align: center;
         }
+        .teamplayers {
+            text-align: center;
+        }
     </style>
 </head>
 <body class="w3-light-grey">
@@ -41,7 +44,7 @@
             </div>
 
 
-        <h1>@Model.TeamName Players</h1>
+        <h1 class="teamplayers">@Model.TeamName Players</h1>
 
         <div class="w3-row-padding">
             @foreach (var player in Model.Nbaplayers)
