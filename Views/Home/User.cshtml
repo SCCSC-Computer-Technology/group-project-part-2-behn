@@ -1,5 +1,4 @@
-﻿
-@model SportsApp2.Models.User
+﻿@model SportsApp2.Models.User
 @{
     Layout = null;
     ViewData["Title"] = "Home Page";
@@ -17,9 +16,102 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-            html, body, h1, h2, h3, h4, h5, h6 {
+            html, body, h1, h2, h3, h4, h5, h6 
+            {
                 font-family: "Raleway", sans-serif
             }
+
+            .favorite-placeholder {
+    border: 3px dashed #004aad;
+    border-radius: 18px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.favorite-placeholder:hover {
+    background-color: #efefef;
+    transform: scale(1.01);
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.custom-modal-content {
+    background-color: #f0f0f0;
+    margin: auto;
+    width: 70%;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: modalFade 0.3s ease;
+}
+
+.custom-modal-header,
+.custom-modal-footer {
+    background-color: #5998c5;
+    color: white;
+    padding: 20px 30px;
+}
+
+.custom-modal-body {
+    padding: 30px;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ddd;
+}
+modalFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Login Button */
+.btnsubmit {
+    width: 100%;
+    background: #083d77;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 24px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 24px;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btnsubmit:hover {
+        background: #5998c5;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(203, 238, 243, 0.3);
+    }
     </style>
 </head>
 <body>
@@ -62,7 +154,7 @@
                         <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
                         <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
                         <div class="w3-container">
-                            <h1><b>Favorite Teams</b></h1>
+                            <h1><b>Profile</b></h1>
                             <div class="w3-section w3-bottombar w3-padding-16"></div>
                         </div>
                     </header>
@@ -71,19 +163,18 @@
                         <!-- Profile -->
                         <div class="w3-card w3-round w3-white">
                             <div class="w3-container">
-                                <h4>@Model.FirstName @Model.LastName</h4>
+                                <h4><center>@Model.FirstName @Model.LastName</center></h4>
                                 @if (!string.IsNullOrEmpty(Model.ProfileImagePath))
                                 {
-                                    <img src="@(Url.Content(Model.ProfileImagePath))" width="150" />
+                                    <center><img src="@(Url.Content(Model.ProfileImagePath))" width="150" style=" border-radius: 50%;" /></center>
                                 }
                                 else
                                 {
                                     <p>No profile image</p>
                                 }
                                 <hr>
-                                <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Email</p>
-                                <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Location</p>
-                                <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>Birthday</p>
+                                <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>@Model.Email</p>
+                                
                             </div>
                         </div>
                         <br>
@@ -91,34 +182,20 @@
                         <!-- Accordion -->
                         <div class="w3-card w3-round">
                             <div style=" background-color:#2694e1; color: white;">
-                                <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align">
-                                    <i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Sign Out
-                                </button>
-                                <div id="Demo1" class="w3-hide w3-container">
-                                    <p>Some text..</p>
-                                </div>
-                                <a asp-controller="Home" asp-action="UpcomingEventsHTML" class="w3-button w3-block w3-theme-l1 w3-left-align">Upcoming Events</a>
+                               <a asp-controller="Home" asp-action="Logout" class="w3-button w3-block w3-theme-l1 w3-left-align" style="text-decoration:none;">
+                                 <i class="fa fa-sign-out fa-fw w3-margin-right"></i> Sign Out
+                                  </a>
+                                <a asp-controller="Home" asp-action="UpcomingEventsHTML" class="w3-button w3-block w3-theme-l1 w3-left-align" style="text-decoration:none;">
+                                    <i class="fa fa-calendar fa-fw w3-margin-right"></i> Upcoming Events</a>
 
-                                <div id="Demo2" class="w3-hide w3-container">
-                                    <p>Some other text..</p>
-                                </div>
+                               
 
-                                <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align">
-                                    <i class="fa fa-users fa-fw w3-margin-right"></i> My Players
-                                </button>
-                                <div id="Demo3" class="w3-hide w3-container">
-                                    <div class="w3-row-padding">
-                                        <br>
-                                        <div class="w3-half">
-                                            <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-                                        </div>
-                                        <div class="w3-half">
-                                            <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                                        </div>
-                                    </div>
+                               <a asp-controller="Home" asp-action="EditAccount" class="w3-button w3-block w3-theme-l1 w3-left-align" style="text-decoration:none;">
+                               <i class="fa fa-user fa-fw w3-margin-right"></i> Edit Profile
+                               </a>
                                 </div>
                             </div>
-                        </div>
+                        
                         <br>
 
                         <!-- Interests -->
@@ -133,30 +210,348 @@
                             </div>
                         </div>
                         <br />
-                        <div class="w3-card w3-round w3-white w3-center">
-                            <div class="w3-container">
-                                <p>Upcoming Events:</p>
-                                <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-                                <p><strong>Holiday</strong></p>
-                                <p>Friday 15:00</p>
-                                <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-                            </div>
-                        </div>
+                        
                         <br>
                     </div>
                     <!-- End Left Column -->
                     <!-- Right Column -->
                     <div class="w3-col m9" style="padding-left:24px;">
-    
+                    <h1>Favorite Teams</h1>
                         <div class="w3-container w3-card w3-white w3-margin-bottom">
                             <h2 class="w3-text-grey w3-padding-16">
                                 <img src="~/Football.png" style="width:64px; margin-right:12px; vertical-align:middle;">
                                     NFL
                                 </h2>
-                            
-                                <div class="w3-container">
-                                    <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-                                    <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                            <div class="w3-container w3-card w3-white w3-margin-bottom">
+   
+                                        @if (Model.FavNflid == null)
+                                    {
+                                        <div class="favorite-placeholder" onclick="openModal('nflModal')">
+                                            <i class="fa fa-plus-circle" style="font-size:48px; color:#999;"></i>
+                                            <p>No favorite NFL team selected</p>
+                                            <p style="color:#2694e1;">Click to add one</p>
+                                        </div>
+                                    }
+                                    else if (Model.FavNflid == 3)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="3">
+                                                <img src="~/Ravens.png" alt="Ravens"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Baltimore Ravens</h3>
+                                        </div>
+                                    }
+                                    else if (Model.FavNflid == 26)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="26">
+                                                <img src="~/Eagles.png" alt="Eagles"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Philadelphia Eagles</h3>
+                                        </div>
+                                    }
+                                    else if (Model.FavNflid == 27 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="27">
+                                                <img src="~/Steelers.png" alt="Steelers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Philadelphia Eagles</h3>
+                                        </div>        
+                                    }
+                                    else if (Model.FavNflid == 32 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="32">
+                                                <img src="~/Commanders.png" alt="Commanders"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Washington Commanders</h3>
+                                        </div>        
+                                    }
+                                    else if (Model.FavNflid == 25 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="25">
+                                                <img src="~/Jets.png" alt="Jets"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>New York Jets</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 24 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="24">
+                                                <img src="~/Giants.png" alt="Giants"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>New York Giants</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 4 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="4">
+                                                <img src="~/Bills.png" alt="Bills"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Buffalo Bills</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 5 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="5">
+                                                <img src="~/Panthers.png" alt="Panthers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Carolina Panthers</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 2 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="2">
+                                                <img src="~/Falcons.png" alt="Falcons"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Atlanta Falcons</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 15 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="15">
+                                                <img src="~/Jaguars.png" alt="Jaguars"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Jacksonville Jaguars</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 20 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="20">
+                                                <img src="~/Dolphins.png" alt="Dolphins"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Miami Dolphins</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 30 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="30">
+                                                <img src="~/Buccaneers.png" alt="Buccaneers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Tampa Bay Buccaneers</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 9 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="9">
+                                                <img src="~/Cowboys.png" alt="Cowboys"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Dallas Cowbpys</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 13 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="13">
+                                                <img src="~/Texans.png" alt="Texans"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Houston Texans</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 17 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="17">
+                                                <img src="~/Raiders.png" alt="Raiders"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Las Vegas Raiders</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 11 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="11">
+                                                <img src="~/Lions.png" alt="Lions"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Detroit Lions</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 6 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="6">
+                                                <img src="~/Bears.png" alt="Bears"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Chicago Bears</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 12 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="12">
+                                                <img src="~/Green Bay.png" alt="Packers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Green Bay Packers</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 7 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="7">
+                                                <img src="~/Bengals.png" alt="Bengals"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Cincinnati Bengals</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 14 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="14">
+                                                <img src="~/Colts.png" alt="Colts"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Indianapolis Colts</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 8 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="8">
+                                                <img src="~/Browns.png" alt="Browns"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Cleveland Browns</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 16 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="16">
+                                                <img src="~/Chiefs.png" alt="Chiefs"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Kansas City Chiefs</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 21 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="21">
+                                                <img src="~/Vikings.png" alt="Vikings"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Minnesota Vikings</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 1 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="1">
+                                                <img src="~/Cardinals.png" alt="Cardinals"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Arizona Cardinals</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 19 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="19">
+                                                <img src="~/Rams.png" alt="Rams"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Los Angeles Rams</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 18 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="18">
+                                                <img src="~/Chargers.png" alt="Chargers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Los Angeles Chargers</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 28 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="28">
+                                                <img src="~/49ers.png" alt="49ers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>San Francisco 49ers</h3>
+                                        </div>        
+                                    }
+                                     else if (Model.FavNflid == 10 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="10">
+                                                <img src="~/Broncos.png" alt="Broncos"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Denver Broncos</h3>
+                                        </div>        
+                                    }
+                                      else if (Model.FavNflid == 23 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="23">
+                                                <img src="~/Saints.png" alt="Saints"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>New Orleans Saints</h3>
+                                        </div>        
+                                    }
+                                      else if (Model.FavNflid == 22 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="22">
+                                                <img src="~/Patriots.png" alt="Patriots"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>New England Patriots</h3>
+                                        </div>        
+                                    }
+                                      else if (Model.FavNflid == 31 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="31">
+                                                <img src="~/Titans.png" alt="Titans"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Tennessee Titans</h3>
+                                        </div>        
+                                    }
+                                      else if (Model.FavNflid == 29 )
+                                    {
+                                       <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="29">
+                                                <img src="~/Seahawks.png" alt="Seahawks"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Seattle Seahawks</h3>
+                                        </div>        
+                                    }
                                     <hr>
                                 </div>
                                 <div class="w3-container">
@@ -164,16 +559,317 @@
                                         <img src="~/Basketball.png" style="width:64px; margin-right:2px; vertical-align:middle;">
                                             NBA
                                         </h2>
-                                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-                                        <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                               @if (Model.FavNbaid == null)
+                                                {
+                                                    <div class="favorite-placeholder" onclick="openModal('nbaModal')">
+                                                    <i class="fa fa-plus-circle" style="font-size:48px; color:#999;"></i>
+                                                    <p>No favorite NBA team selected</p>
+                                                    <p style="color:#2694e1;">Click to add one</p>
+                                                    </div>
+                                    }
+                                    else if (Model.FavNbaid == 1)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="1">
+                                                <img src="~/Hawks.png" alt="Hawks"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Atlanta Hawks</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 2)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="2">
+                                                <img src="~/Celtics.png" alt="Hawks"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Boston Celtics</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 3)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3">
+                                                <img src="~/Nets.png" alt="Nets"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>brooklyn Nets</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 4)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="4">
+                                                <img src="~/Hornets.png" alt="Charlotte Hornets"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Charlotte Hornets</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 5)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="5">
+                                                <img src="~/Bulls.png" alt="Chicago Bulls"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Chicago Bulls</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 6)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="6">
+                                                <img src="~/Cavaliers.png" alt="Cavaliers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Cleveland Cavaliers</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 7)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="7">
+                                                <img src="~/Mavericks.png" alt="Mavericks"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Dallas Mavericks</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 8)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="8">
+                                                <img src="~/Nuggets.png" alt="Nuggets"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Denver Nuggets</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 9)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="9">
+                                                <img src="~/Pistons.png" alt="Pistons"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Cetroit Pistons</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 10)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="10">
+                                                <img src="~/Warriors.png" alt="Warriors"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Golden State Warriors</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 11)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="11">
+                                                <img src="~/Rockets.png" alt="Rockets"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Houston Rockets</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 12)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="12">
+                                                <img src="~/Pacers.png" alt="Pacers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Indiana Pacers</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 13)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="13">
+                                                <img src="~/Clippers.png" alt="Clippers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Los Angeles Clippers</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 14)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="14">
+                                                <img src="~/Lakers.png" alt="Lakers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Los Angeles Lakers</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 15)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="15">
+                                                <img src="~/Grizzlies.png" alt="Grizzlies"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Memphis Grizzlies</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 16)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="16">
+                                                <img src="~/Heat.png" alt="Heat"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Miami Heat</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 17)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="17">
+                                                <img src="~/Bucks.png" alt="Bucks"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Milwaukee Bucks</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 18)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="18">
+                                                <img src="~/Timberwolves.png" alt="Timberwolves"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Minnesota Timberwolves</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 19)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="19">
+                                                <img src="~/Pelicans.png" alt="Pelicans"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>New Orleans Pelicans</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 20)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="20">
+                                                <img src="~/Knicks.png" alt="Knicks"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>New York Knicks</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 21)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="21">
+                                                <img src="~/Thunder.png" alt="Thunder"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Oklahoma City Thunder</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 22)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="22">
+                                                <img src="~/Magic.png" alt="Magic"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Orlando Magic</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 23)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="23">
+                                                <img src="~/76ers.png" alt="76ers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Philadelphia 76ers</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 24)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="24">
+                                                <img src="~/Suns.png" alt="Suns"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Phoenix Suns</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 25)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="25">
+                                                <img src="~/Trailblazers.png" alt="Trail Blazers"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Portland Trail Blazers</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 26)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="26">
+                                                <img src="~/Kings.png" alt="Kings"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Sacramento Kings</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 27)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="27">
+                                                <img src="~/Spurs.png" alt="Spurs"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>San Antonio Spurs</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 28)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="28">
+                                                <img src="~/Raptors.png" alt="Raptors"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Toronto Raptors</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 29)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="29">
+                                                <img src="~/Jazz.png" alt="Jazz"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Utah Jazz</h3>
+                                        </div>
+                                    }
+                                     else if (Model.FavNbaid == 30)
+                                    {
+                                        <div class="w3-container w3-center">
+                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="30">
+                                                <img src="~/Wizards.png" alt="Wizards"
+                                                style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
+                                            </a>
+                                            <h3>Washington Wizards</h3>
+                                        </div>
+                                    }
+
                                         <hr>
-                                    </div>
-                                    <div class="w3-container">
-                                        <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
-                                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
-                                    </div>
-                                </div>
+                                  
                         
 
                             </div> <!-- End Right Column -->
@@ -198,6 +894,118 @@
             </div>
         </div>
     </div>
+
+    <div id="nflModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <div class="custom-modal-header">
+                <span class="close" onclick="closeModal('nflModal')">&times;</span>
+                <h2>Select Favorite NFL Team</h2>
+            </div>
+
+            <div class="custom-modal-body">
+                <form asp-action="SaveFavoriteNfl" asp-controller="Home" method="post">
+                <select name="teamId" class="w3-select w3-border" required>
+                <option value="" disabled selected>Choose an NFL team</option>
+                <option value="1">Arizona Cardinals</option>
+                <option value="2">Atlanta Falcons</option>
+                <option value="3">Baltimore Ravens</option>
+                <option value="4">Buffalo Bills</option>
+                <option value="5">Carolina Panthers</option>
+                <option value="6">Chicago Bears</option>
+                <option value="7">Cincinatti Bengals</option>
+                <option value="8">Cleveland Browns</option>
+                <option value="9">Dallas Cowboys</option>
+                <option value="10">Denver Broncos</option>
+                <option value="11">Detroit Lions</option>
+                <option value="12">Green Bay Packers</option>
+                <option value="13">Houston Texans</option>
+                <option value="14">Indianapolis Colts</option>
+                <option value="15">Jacksonville Jaguars</option>
+                <option value="16">Kansas City Chiefs</option>
+                <option value="17">Las Vegas Raiders</option>
+                <option value="18">Los Angeles Chargers</option>
+                <option value="19">Los Angeles Rams</option>
+                <option value="20">Miami Dolphins</option>
+                <option value="21">Minnesota Vikings</option>
+                <option value="22">New England Patriots</option>
+                <option value="23">New Orleans Saints</option>
+                <option value="24">New Yorks Giants</option>
+                <option value="25">New York Jets</option>
+                <option value="26">Philadelphia Eagles</option>
+                <option value="27">Pittsburgh Steelers</option>
+                <option value="28">San Francisco 49ers</option>
+                <option value="29">Seattle Seahawks</option>
+                <option value="30">Tampa Bay Buccaneers</option>
+                <option value="31">Tennesse Titans</option>
+                <option value="32">Washington Commanders</option>
+                </select>
+
+                <br /><br />
+                <button type="submit" class="w3-button w3-blue">Save Favorite</button>
+                </form>
+                </div>
+
+            <div class="custom-modal-footer">
+                <p>Sports Application</p>
+            </div>
+        </div>
+    </div>
+
+   <div id="nbaModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <div class="custom-modal-header">
+                <span class="close" onclick="closeModal('nflModal')">&times;</span>
+                <h2>Select Favorite NBA Team</h2>
+            </div>
+
+            <div class="custom-modal-body">
+                <form asp-action="SaveFavoriteNba" asp-controller="Home" method="post">
+                <select name="teamId" class="w3-select w3-border" required>
+                <option value="" disabled selected>Choose an NBA team</option>
+                <option value="1">Atlanta Hawks</option>
+                <option value="2">Boston Celtics</option>
+                <option value="3">Brooklyn Nets</option>
+                <option value="4">Charlotte Hornets</option>
+                <option value="5">Chicago Bulls</option>
+                <option value="6">Cleveland Cavaliers</option>
+                <option value="7">Dallas Mavericks</option>
+                <option value="8">Denver Nuggets</option>
+                <option value="9">Detroit Pistons</option>
+                <option value="10">Golden State Warriors</option>
+                <option value="11">Houston Rockets</option>
+                <option value="12">Indiana Pacers</option>
+                <option value="13">Los Angeles Clippers</option>
+                <option value="14">Los Angeles Lakers</option>
+                <option value="15">Memphis Grizzlies</option>
+                <option value="16">Miami Heat</option>
+                <option value="17">Milwaukee Bucks</option>
+                <option value="18">Minnesota Timberwolves</option>
+                <option value="19">New Orleans Pelicans</option>
+                <option value="20">New York Knicks</option>
+                <option value="21">Oklahoma City Thunder</option>
+                <option value="22">Orlando Magic</option>
+                <option value="23">Philadelphia 76ers</option>
+                <option value="24">Phoenix Suns</option>
+                <option value="25">Portland Trail Blazers</option>
+                <option value="26">Sacramento Kings</option>
+                <option value="27">San Antonio Spurs</option>
+                <option value="28">Toronto Raptors</option>
+                <option value="29">Utah Jazz</option>
+                <option value="30">Washington Wizards</option>
+                
+                </select>
+
+                <br /><br />
+                <button type="submit" class="btnsubmit">Save Favorite</button>
+                </form>
+                </div>
+
+            <div class="custom-modal-footer">
+                <p>Sports Application</p>
+            </div>
+        </div>
+    </div>
+
        
 
     <script>
@@ -212,6 +1020,29 @@
                 document.getElementById("myOverlay").style.display = "none";
             }
     </script>
+
+    <script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        const nflModal = document.getElementById("nflModal");
+        const nbaModal = document.getElementById("nbaModal");
+
+        if (event.target === nflModal) {
+            nflModal.style.display = "none";
+        }
+
+        if (event.target === nbaModal) {
+            nbaModal.style.display = "none";
+        }
+    };
+</script>
         
 </body>
 </html>
