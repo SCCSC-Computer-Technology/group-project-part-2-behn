@@ -9,27 +9,76 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .home-hero {
+            height: 100vh;
+            background: url('/images/arena.png') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Dark overlay */
+        .home-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .overlay {
+            position: relative;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 50px;
+            border-radius: 12px;
+        }
+
+        .overlay h1 {
+            margin-bottom: 25px;
+            z-index: 1;
+        }
+
+        .btn-custom {
+            padding: 10px 25px;
+            transform: scale(1.05);
+            transition: 0.2s;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
+
     <div class="home-hero">
 
-        <div class="top-header">            
-            <h1>Welcome to the BEHN Sports Web App!</h1>        
-        </div>
-
         <div class="overlay">
-            <a asp-controller="Home" asp-action="Login" class="btn btn-light m-2">
+            <h1>Welcome to the BEHN Sports Web App!</h1>
+
+            <a asp-controller="Home" asp-action="Login" class="btn btn-light btn-custom m-2">
                 Log In
             </a>
 
-            <a asp-controller="Home" asp-action="CreateAccount" class="btn btn-light m-2">
+            <a asp-controller="Home" asp-action="CreateAccount" class="btn btn-light btn-custom m-2">
                 Register
             </a>
         </div>
 
     </div>
+
 </body>
 </html>
