@@ -279,7 +279,7 @@ namespace SportsApp2.Controllers
             return RedirectToAction("User");
         }
 
-        public IActionResult UpcomingEventsHTML()
+        public IActionResult UpcomingEventsHTML(string category)
         {
             List<UpcomingEvents> events = new List<UpcomingEvents>();
 
@@ -294,10 +294,7 @@ namespace SportsApp2.Controllers
 
                     foreach (var row in rows)
                     {
-                        
                         DateTime eventDate;
-
-                        
                         bool validDate = DateTime.TryParse(row.Cell(6).GetValue<string>(), out eventDate);
 
                         if (validDate)
@@ -313,38 +310,48 @@ namespace SportsApp2.Controllers
                                 Category = row.Cell(7).GetValue<string>()
                             });
                         }
-
                     }
                 }
             }
 
             var upcomingEvents = events
-            .Where(e =>
-            {
-                string cleanedTime = e.Time.Replace("ET", "").Trim();
-
-                if (DateTime.TryParse($"{e.Date:yyyy-MM-dd} {cleanedTime}", out DateTime eventDateTime))
+                .Where(e =>
                 {
-                    return eventDateTime >= DateTime.Now;
-                }
+                    string cleanedTime = e.Time.Replace("ET", "").Trim();
 
-                return false;
-            })
-            .OrderBy(e =>
+                    if (DateTime.TryParse($"{e.Date:yyyy-MM-dd} {cleanedTime}", out DateTime eventDateTime))
+                    {
+                        return eventDateTime >= DateTime.Now;
+                    }
+
+                    return false;
+                });
+
+            if (!string.IsNullOrEmpty(category) && category != "ALL")
             {
-                string cleanedTime = e.Time.Replace("ET", "").Trim();
+                upcomingEvents = upcomingEvents.Where(e =>
+                    !string.IsNullOrEmpty(e.Category) &&
+                    e.Category.ToUpper() == category.ToUpper());
+            }
 
-                if (DateTime.TryParse($"{e.Date:yyyy-MM-dd} {cleanedTime}", out DateTime eventDateTime))
+            var filteredEvents = upcomingEvents
+                .OrderBy(e =>
                 {
-                    return eventDateTime;
-                }
+                    string cleanedTime = e.Time.Replace("ET", "").Trim();
 
-                return DateTime.MaxValue;
-            })
-            .ToList();
+                    if (DateTime.TryParse($"{e.Date:yyyy-MM-dd} {cleanedTime}", out DateTime eventDateTime))
+                    {
+                        return eventDateTime;
+                    }
 
-        return View(upcomingEvents);
-       }
+                    return DateTime.MaxValue;
+                })
+                .ToList();
+
+            ViewBag.SelectedCategory = category;
+
+            return View(filteredEvents);
+        }
         public async Task<IActionResult> EditAccount()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
