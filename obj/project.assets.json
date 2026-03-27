@@ -3366,23 +3366,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\heinr\\.nuget\\packages\\": {},
+    "C:\\Users\\briea\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Group-Project2\\group-project-part-2-behn\\SportsApp2.csproj",
+      "projectUniqueName": "C:\\Users\\briea\\OneDrive\\Documents\\GitHub\\group-project-part-2-behn\\SportsApp2.csproj",
       "projectName": "SportsApp2",
-      "projectPath": "C:\\Group-Project2\\group-project-part-2-behn\\SportsApp2.csproj",
-      "packagesPath": "C:\\Users\\heinr\\.nuget\\packages\\",
-      "outputPath": "C:\\Group-Project2\\group-project-part-2-behn\\obj\\",
+      "projectPath": "C:\\Users\\briea\\OneDrive\\Documents\\GitHub\\group-project-part-2-behn\\SportsApp2.csproj",
+      "packagesPath": "C:\\Users\\briea\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\briea\\OneDrive\\Documents\\GitHub\\group-project-part-2-behn\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\heinr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\briea\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
