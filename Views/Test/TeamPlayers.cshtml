@@ -1,6 +1,7 @@
 ﻿@model SportsApp2.Models.Nbateam
 
 @{
+    Layout = null;
     ViewData["Title"] = Model.TeamName + " Players";
     var teamName = Model.TeamName.Split(' ').Last();
     //taking last part of team name for finding matching logo
@@ -13,6 +14,10 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
@@ -38,10 +43,55 @@
         }
     </style>
 </head>
-<body class="w3-light-grey">
+<body class="w3-light-grey w3-content" style="max-width:1600px">
 
-    <div class="w3-container w3-padding-32">
-        <a href="##" onClick="history.go(-1); return false;" class="w3-button w3-black w3-margin-bottom">Back</a>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+        <br>
+        <div class="w3-container">
+            <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
+                <h4><b>Sports Management</b></h4>
+
+            </div>
+            <div class="w3-bar-block">
+                <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
+                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
+                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+
+            </div>
+            <div class="w3-panel w3-large">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+        </nav>
+
+        
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+    <div class="w3-main" style="margin-left:300px">
+
+        <!-- Header -->
+            <header id="Sports Management">
+                <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+                <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+                <div class="w3-container">
+                    <h1><b>Sports Management</b></h1>
+                    <div class="w3-section w3-bottombar w3-padding-16">
+                         </div>
+                         </div>
+                        </header>
+        <a href="##" onClick="history.go(-1); return false;" class="w3-button w3-black w3-margin-bottom w3-right">Back</a>
         <!--logo--> 
         <div class="w3-center">
             <img src="~/@logoImage" alt="@Model.TeamName Logo" class="img-fluid mx-auto d-block" style="max-width: 600px;">
@@ -49,6 +99,9 @@
 
 
         <h1 class="teamplayers">@Model.TeamName Players</h1>
+         <div class="w3-section w3-topbar w3-padding-16">
+                         </div>
+
 
         <div class="w3-row-padding">
             @foreach (var player in Model.Nbaplayers)
@@ -63,8 +116,20 @@
                     </div>
                 </div>
             }
+
         </div>
     </div>
+      <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
 
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+      </script>
 </body>
 </html>
