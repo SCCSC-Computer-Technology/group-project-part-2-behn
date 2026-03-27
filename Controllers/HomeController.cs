@@ -1,6 +1,6 @@
+using Azure.Core;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Drawing.Diagrams;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsApp2.Models;
@@ -141,50 +141,6 @@ namespace SportsApp2.Controllers
             return View(user);
         }
 
-        [HttpPost]
-        public IActionResult SaveFavoriteNfl(int teamId)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            var user = _context.User.FirstOrDefault(u => u.UserId == userId);
-
-            if (user != null)
-            {
-                user.FavNflid = teamId;
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("User");
-        }
-
-            
-        
-
-        [HttpPost]
-        public IActionResult SaveFavoriteNba(int teamId)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-
-            if (userId == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            var user = _context.User.FirstOrDefault(u => u.UserId == userId);
-
-            if (user != null)
-            {
-                user.FavNbaid = teamId;
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("User");
-        }
-
 
         public IActionResult CreateAccount()
         {
@@ -229,7 +185,11 @@ namespace SportsApp2.Controllers
             _environment = environment;
         }
 
-  
+
+        public IActionResult Back()
+        {
+            return Redirect(Request.Headers.Referer.ToString());
+        }
 
         //This for login
         public IActionResult Login()
@@ -385,95 +345,6 @@ namespace SportsApp2.Controllers
 
         return View(upcomingEvents);
        }
-
-        public async Task<IActionResult> EditAccount()
-        {
-            var userId = HttpContext.Session.GetInt32("UserId");
-
-            if (userId == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            var user = await _context.User.FirstOrDefaultAsync(u => u.UserId == userId);
-
-            if (user == null)
-            {
-                HttpContext.Session.Clear();
-                return RedirectToAction("Login");
-            }
-
-            var model = new EditAccount
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                CurrentProfileImagePath = user.ProfileImagePath
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditAccount(EditAccount model)
-        {
-            var userId = HttpContext.Session.GetInt32("UserId");
-
-            if (userId == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            var user = await _context.User.FirstOrDefaultAsync(u => u.UserId == userId);
-
-            if (user == null)
-            {
-                HttpContext.Session.Clear();
-                return RedirectToAction("Login");
-            }
-
-            if (!ModelState.IsValid)
-            {
-                model.CurrentProfileImagePath = user.ProfileImagePath;
-                return View(model);
-            }
-
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
-            user.Email = model.Email;
-
-            if (!string.IsNullOrWhiteSpace(model.NewPassword))
-            {
-                user.Password = model.NewPassword;
-            }
-
-            if (model.ProfileImage != null && model.ProfileImage.Length > 0)
-            {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.ProfileImage.FileName);
-                string filePath = Path.Combine(uploadsFolder, fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await model.ProfileImage.CopyToAsync(stream);
-                }
-
-                user.ProfileImagePath = "/images/" + fileName;
-            }
-
-            await _context.SaveChangesAsync();
-
-            HttpContext.Session.SetString("UserEmail", user.Email);
-
-            return RedirectToAction("User");
-        }
     }
 }
 
