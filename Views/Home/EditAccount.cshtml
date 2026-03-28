@@ -11,11 +11,29 @@
     <title>Edit Account</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+
             body, h1, h2, h3, h4, h5, h6 {
                 font-family: "Raleway", sans-serif;
+            }
+
+            .page-wrapper {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .content-wrapper {
+                flex: 1;
             }
 
             .edit-card {
@@ -79,119 +97,168 @@
                     border-color: #083d77;
                     box-shadow: 0 0 0 3px rgba(60, 135, 217, 0.1);
                 }
+
+            .main-area {
+                margin-left: 300px;
+                padding-bottom: 30px;
+            }
+
+            .footer-top {
+                background: #011d4a;
+                color: white;
+                padding: 16px;
+            }
+
+            .footer-bottom {
+                background: black;
+                color: white;
+                padding: 16px;
+            }
+
+                .footer-bottom a {
+                    color: white;
+                }
+
+            @@media screen and (max-width: 992px) {
+                .main-area {
+                    margin-left: 0;
+                }
+
+                .edit-card {
+                    margin: 20px;
+                }
+            }
     </style>
 </head>
-<body class="w3-light-grey" style="max-width:1600px">
-    
-    <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
-        <br>
-        <div class="w3-container">
-            <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-                <i class="fa fa-remove"></i>
-            </a>
-            <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
-                <h4><b>Sports Management</b></h4>
+<body class="w3-light-grey">
+    <div class="page-wrapper">
 
+        <div class="content-wrapper">
+            <!-- Sidebar/menu -->
+            <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+                <br>
+                <div class="w3-container">
+                    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+                        <i class="fa fa-remove"></i>
+                    </a>
+                    <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
+                        <h4><b>Sports Management</b></h4>
+                    </div>
+
+                    <div class="w3-bar-block">
+                        <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                            <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
+                        </a>
+                        <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
+                            <i class="fa fa-user fa-fw w3-margin-right"></i>USER
+                        </a>
+                        <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                            <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
+                        </a>
+                    </div>
+
+                    <div class="w3-panel w3-large">
+                        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                        <i class="fa fa-instagram w3-hover-opacity"></i>
+                        <i class="fa fa-snapchat w3-hover-opacity"></i>
+                        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                        <i class="fa fa-twitter w3-hover-opacity"></i>
+                        <i class="fa fa-linkedin w3-hover-opacity"></i>
+                    </div>
+                </nav>
+
+                <!-- Overlay -->
+                <div class="w3-overlay w3-hide-large w3-animate-opacity"
+                     onclick="w3_close()"
+                     style="cursor:pointer"
+                     title="close side menu"
+                     id="myOverlay"></div>
+
+                <!-- Main Content -->
+                <div class="main-area">
+                    <div class="w3-card w3-white edit-card">
+                        <h2 class="w3-center">Edit Account</h2>
+                        <hr />
+
+                        <form asp-action="EditAccount" asp-controller="Home" method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+
+                            <div asp-validation-summary="All" class="w3-text-red"></div>
+
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input asp-for="FirstName" class="w3-input w3-border w3-margin-bottom" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input asp-for="LastName" class="w3-input w3-border w3-margin-bottom" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input asp-for="Email" class="w3-input w3-border w3-margin-bottom" />
+                            </div>
+
+                            <label>Current Profile Picture</label>
+                            <div class="w3-margin-bottom">
+                                @if (!string.IsNullOrEmpty(Model.CurrentProfileImagePath))
+                                {
+                                    <img src="@Url.Content(Model.CurrentProfileImagePath)" alt="Profile Picture" class="profile-preview" />
+                                }
+                                else
+                                {
+                                    <p>No profile picture uploaded.</p>
+                                }
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload New Profile Picture</label>
+                                <input asp-for="ProfileImage" type="file" class="w3-input w3-border w3-margin-bottom" accept="image/*" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input asp-for="NewPassword" type="password" class="w3-input w3-border w3-margin-bottom" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm New Password</label>
+                                <input asp-for="ConfirmPassword" type="password" class="w3-input w3-border w3-margin-bottom" />
+                            </div>
+
+                            <br />
+                            <button type="submit" class="btnsave">Save Changes</button>
+                            <a asp-action="User" asp-controller="Home" class="w3-button w3-block w3-light-grey w3-margin-top">Cancel</a>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="w3-bar-block">
-                <a asp-controller="Home" asp-action="Index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
-                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
-                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
 
-            </div>
-            <div class="w3-panel w3-large">
-                <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                <i class="fa fa-instagram w3-hover-opacity"></i>
-                <i class="fa fa-snapchat w3-hover-opacity"></i>
-                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-                <i class="fa fa-twitter w3-hover-opacity"></i>
-                <i class="fa fa-linkedin w3-hover-opacity"></i>
-            </div>
-        </nav>
+            <!-- Footer -->
+            <footer>
+                <div class="footer-top">
+                    <p>
+                        GAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA).
+                        Call 877-8-HOPENY/text HOPENY (467369) (NY). Please Gamble Responsibly. 888-789-7777/visit ccpg.org (CT),
+                        or visit www.mdgamblinghelp.org (MD). 21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH.
+                        Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms: sportsbook.draftkings.com/promos.
+                    </p>
 
-        <!-- Overlay effect when opening sidebar on small screens -->
-        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+                    <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                </div>
 
-        <!-- !PAGE CONTENT! -->
-        <div class="w3-main" style="margin-left:300px">
-        <div class="w3-card w3-white edit-card">
-        <h2 class="w3-center">Edit Account</h2>
-        <hr />
-
-        <form asp-action="EditAccount" asp-controller="Home" method="post" enctype="multipart/form-data">
-            @Html.AntiForgeryToken()
-
-            <div asp-validation-summary="All" class="w3-text-red"></div>
-
-            <div class="form-group">
-            <label>First Name</label>
-            <input asp-for="FirstName" class="w3-input w3-border w3-margin-bottom" />
-            </div>
-
-            <div class="form-group">
-            <label>Last Name</label>
-            <input asp-for="LastName" class="w3-input w3-border w3-margin-bottom" />
-            </div>
-
-            <div class="form-group">
-            <label>Email</label>
-            <input asp-for="Email" class="w3-input w3-border w3-margin-bottom" />
-            </div>
-
-            <label>Current Profile Picture</label>
-            <div class="w3-margin-bottom">
-                @if (!string.IsNullOrEmpty(Model.CurrentProfileImagePath))
-                {
-                    <img src="@Url.Content(Model.CurrentProfileImagePath)" alt="Profile Picture" class="profile-preview" />
-                }
-                else
-                {
-                    <p>No profile picture uploaded.</p>
-                }
-            </div>
-
-            <div class="form-group">
-            <label>Upload New Profile Picture</label>
-            <input asp-for="ProfileImage" type="file" class="w3-input w3-border w3-margin-bottom" accept="image/*" />
-            </div>
-
-            <div class="form-group">
-            <label>New Password</label>
-            <input asp-for="NewPassword" type="password" class="w3-input w3-border w3-margin-bottom" />
-            </div>
-
-            <div class="form-group">
-            <label>Confirm New Password</label>
-            <input asp-for="ConfirmPassword" type="password" class="w3-input w3-border w3-margin-bottom" />
-            </div>
-
-            <br />
-            <button type="submit" class="btnsave">Save Changes</button>
-            <a asp-action="User" asp-controller="Home" class="w3-button w3-block w3-light-grey w3-margin-top">Cancel</a>
-        </form>
-    </div>
-
-        <footer>
-            <div class="w3-row-padding" style=" background:#011d4a; color:white;">
-                <p>GAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Please Gamble Responsibly. 888-789-7777/visit ccpg.org (CT),or visit www.mdgamblinghelp.org (MD). 21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH. Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms:  sportsbook.draftkings.com/promos.</p>
-
-                <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
-            </div>
-        </footer>
-        <div class="w3-row-padding" style=" background:black; color:white;">
-            <h5>Author: Sports Application</h5>
-            <p><a href="mailto:sportsapplication206@gmail.com">sportsapplication206@gmail.com</a></p>
-            <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                <div class="footer-bottom">
+                    <h5>Author: Sports Application</h5>
+                    <p><a href="mailto:sportsapplication206@gmail.com">sportsapplication206@gmail.com</a></p>
+                    <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
-        <footer>
-        </footer>
-        </div>
 
-    <partial name="_ValidationScriptsPartial" />
+        <partial name="_ValidationScriptsPartial" />
 
         <script>
-                // Script to open and close sidebar
                 function w3_open() {
                     document.getElementById("mySidebar").style.display = "block";
                     document.getElementById("myOverlay").style.display = "block";
@@ -202,5 +269,5 @@
                     document.getElementById("myOverlay").style.display = "none";
                 }
         </script>
-</body>
+    </body>
 </html>
