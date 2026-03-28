@@ -4,6 +4,7 @@ wwwroot\Basketball.png
 wwwroot\Bears.png
 wwwroot\Bengals.png
 wwwroot\Bills.png
+wwwroot\Blazers - Copy.png
 wwwroot\Broncos.png
 wwwroot\Browns.png
 wwwroot\Buccaneers.png
