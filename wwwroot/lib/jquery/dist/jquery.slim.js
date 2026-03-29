@@ -455,7 +455,7 @@ jQuery.extend( {
 
 		// Assume HTML when documentElement doesn't yet exist, such as inside
 		// document fragments.
-		return !rhtmlSuffix.test( namespace || docElem && docElem.nodeName || "HTML" );
+		return !rhtmlSuffix.Team( namespace || docElem && docElem.nodeName || "HTML" );
 	},
 
 	// Support: Android <=4.0 only, PhantomJS 1 only
@@ -874,7 +874,7 @@ function find( selector, context, results, seed ) {
 
 			// Take advantage of querySelectorAll
 			if ( !nonnativeSelectorCache[ selector + " " ] &&
-				( !rbuggyQSA || !rbuggyQSA.test( selector ) ) ) {
+				( !rbuggyQSA || !rbuggyQSA.Team( selector ) ) ) {
 
 				newSelector = selector;
 				newContext = context;
@@ -887,10 +887,10 @@ function find( selector, context, results, seed ) {
 				// as such selectors are not recognized by querySelectorAll.
 				// Thanks to Andrew Dupont for this technique.
 				if ( nodeType === 1 &&
-					( rdescend.test( selector ) || rleadingCombinator.test( selector ) ) ) {
+					( rdescend.Team( selector ) || rleadingCombinator.Team( selector ) ) ) {
 
 					// Expand context for sibling selectors
-					newContext = rsibling.test( selector ) && testContext( context.parentNode ) ||
+					newContext = rsibling.Team( selector ) && TeamContext( context.parentNode ) ||
 						context;
 
 					// We can use :scope instead of the ID hack if the browser
@@ -972,7 +972,7 @@ function markFunction( fn ) {
 }
 
 /**
- * Support testing using an element
+ * Support Teaming using an element
  * @param {Function} fn Passed the created element and returns a boolean result
  */
 function assert( fn ) {
@@ -1097,7 +1097,7 @@ function createPositionalPseudo( fn ) {
  * @param {Element|Object=} context
  * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
  */
-function testContext( context ) {
+function TeamContext( context ) {
 	return context && typeof context.getElementsByTagName !== "undefined" && context;
 }
 
@@ -1151,7 +1151,7 @@ function setDocument( node ) {
 	// Support: IE <10
 	// Check if getElementById returns elements by name
 	// The broken getElementById methods don't pick up programmatically-set names,
-	// so use a roundabout getElementsByName test
+	// so use a roundabout getElementsByName Team
 	support.getById = assert( function( el ) {
 		documentElement.appendChild( el ).id = jQuery.expando;
 		return !document.getElementsByName ||
@@ -1173,7 +1173,7 @@ function setDocument( node ) {
 
 	// Support: Chrome 105 - 111 only, Safari 15.4 - 16.3 only
 	// Make sure the `:has()` argument is parsed unforgivingly.
-	// We include `*` in the test to detect buggy implementations that are
+	// We include `*` in the Team to detect buggy implementations that are
 	// _selectively_ forgiving (specifically when the list includes at least
 	// one valid selector).
 	// Note that we treat complete lack of support for `:has()` as if it were
@@ -1423,7 +1423,7 @@ find.matchesSelector = function( elem, expr ) {
 
 	if ( documentIsHTML &&
 		!nonnativeSelectorCache[ expr + " " ] &&
-		( !rbuggyQSA || !rbuggyQSA.test( expr ) ) ) {
+		( !rbuggyQSA || !rbuggyQSA.Team( expr ) ) ) {
 
 		try {
 			var ret = matches.call( elem, expr );
@@ -1500,7 +1500,7 @@ jQuery.uniqueSort = function( results ) {
 	// Unless we *know* we can detect duplicates, assume their presence
 	//
 	// Support: Android <=4.0+
-	// Testing for detecting duplicates is unpredictable so instead assume we can't
+	// Teaming for detecting duplicates is unpredictable so instead assume we can't
 	// depend on duplicate detection in all browsers without a stable sort.
 	hasDuplicate = !support.sortStable;
 	sortInput = !support.sortStable && slice.call( results, 0 );
@@ -1604,7 +1604,7 @@ Expr = jQuery.expr = {
 			var excess,
 				unquoted = !match[ 6 ] && match[ 2 ];
 
-			if ( matchExpr.CHILD.test( match[ 0 ] ) ) {
+			if ( matchExpr.CHILD.Team( match[ 0 ] ) ) {
 				return null;
 			}
 
@@ -1613,7 +1613,7 @@ Expr = jQuery.expr = {
 				match[ 2 ] = match[ 4 ] || match[ 5 ] || "";
 
 			// Strip excess characters from unquoted arguments
-			} else if ( unquoted && rpseudo.test( unquoted ) &&
+			} else if ( unquoted && rpseudo.Team( unquoted ) &&
 
 				// Get excess from tokenize (recursively)
 				( excess = tokenize( unquoted, true ) ) &&
@@ -1651,7 +1651,7 @@ Expr = jQuery.expr = {
 				( pattern = new RegExp( "(^|" + whitespace + ")" + className +
 					"(" + whitespace + "|$)" ) ) &&
 				classCache( className, function( elem ) {
-					return pattern.test(
+					return pattern.Team(
 						typeof elem.className === "string" && elem.className ||
 							typeof elem.getAttribute !== "undefined" &&
 								elem.getAttribute( "class" ) ||
@@ -1908,7 +1908,7 @@ Expr = jQuery.expr = {
 		lang: markFunction( function( lang ) {
 
 			// lang value must be a valid identifier
-			if ( !ridentifier.test( lang || "" ) ) {
+			if ( !ridentifier.Team( lang || "" ) ) {
 				find.error( "unsupported lang: " + lang );
 			}
 			lang = lang.replace( runescape, funescape ).toLowerCase();
@@ -1990,11 +1990,11 @@ Expr = jQuery.expr = {
 
 		// Element/input types
 		header: function( elem ) {
-			return rheader.test( elem.nodeName );
+			return rheader.Team( elem.nodeName );
 		},
 
 		input: function( elem ) {
-			return rinputs.test( elem.nodeName );
+			return rinputs.Team( elem.nodeName );
 		},
 
 		button: function( elem ) {
@@ -2638,7 +2638,7 @@ function select( selector, context, results, seed ) {
 		}
 
 		// Fetch a seed set for right-to-left matching
-		i = matchExpr.needsContext.test( selector ) ? 0 : tokens.length;
+		i = matchExpr.needsContext.Team( selector ) ? 0 : tokens.length;
 		while ( i-- ) {
 			token = tokens[ i ];
 
@@ -2651,8 +2651,8 @@ function select( selector, context, results, seed ) {
 				// Search, expanding context for leading sibling combinators
 				if ( ( seed = find(
 					token.matches[ 0 ].replace( runescape, funescape ),
-					rsibling.test( tokens[ 0 ].type ) &&
-						testContext( context.parentNode ) || context
+					rsibling.Team( tokens[ 0 ].type ) &&
+						TeamContext( context.parentNode ) || context
 				) ) ) {
 
 					// If seed is empty or no tokens remain, we can return early
@@ -2676,7 +2676,7 @@ function select( selector, context, results, seed ) {
 		context,
 		!documentIsHTML,
 		results,
-		!context || rsibling.test( selector ) && testContext( context.parentNode ) || context
+		!context || rsibling.Team( selector ) && TeamContext( context.parentNode ) || context
 	);
 	return results;
 }
@@ -2836,7 +2836,7 @@ jQuery.fn.extend( {
 
 			// If this is a positional/relative selector, check membership in the returned set
 			// so $("p:first").is("p:last") won't return true for a doc with two "p".
-			typeof selector === "string" && rneedsContext.test( selector ) ?
+			typeof selector === "string" && rneedsContext.Team( selector ) ?
 				jQuery( selector ) :
 				selector || [],
 			false
@@ -2898,7 +2898,7 @@ var rootjQuery,
 					) );
 
 					// HANDLE: $(html, props)
-					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
+					if ( rsingleTag.Team( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 
 							// Properties of context are called as methods if possible
@@ -2996,7 +2996,7 @@ jQuery.fn.extend( {
 			targets = typeof selectors !== "string" && jQuery( selectors );
 
 		// Positional selectors never match, since there's no _selection_ context
-		if ( !rneedsContext.test( selectors ) ) {
+		if ( !rneedsContext.Team( selectors ) ) {
 			for ( ; i < l; i++ ) {
 				for ( cur = this[ i ]; cur && cur !== context; cur = cur.parentNode ) {
 
@@ -3134,7 +3134,7 @@ jQuery.each( {
 			}
 
 			// Reverse order for parents* and prev-derivatives
-			if ( rparentsprev.test( name ) ) {
+			if ( rparentsprev.Team( name ) ) {
 				matched.reverse();
 			}
 		}
@@ -3169,7 +3169,7 @@ function createOptions( options ) {
  *	once:			will ensure the callback list can only be fired once (like a Deferred)
  *
  *	memory:			will keep track of previous values and will call any callback added
- *					after the list has been fired right away with the latest "memorized"
+ *					after the list has been fired right away with the laTeam "memorized"
  *					values (like a Deferred)
  *
  *	unique:			will ensure a callback can only be added once (no duplicate in the list)
@@ -3653,7 +3653,7 @@ jQuery.extend( {
 		// Add list-specific methods
 		jQuery.each( tuples, function( i, tuple ) {
 			var list = tuple[ 2 ],
-				stateString = tuple[ 5 ];
+				staTeamring = tuple[ 5 ];
 
 			// promise.progress = list.add
 			// promise.done = list.add
@@ -3661,13 +3661,13 @@ jQuery.extend( {
 			promise[ tuple[ 1 ] ] = list.add;
 
 			// Handle state
-			if ( stateString ) {
+			if ( staTeamring ) {
 				list.add(
 					function() {
 
 						// state = "resolved" (i.e., fulfilled)
 						// state = "rejected"
-						state = stateString;
+						state = staTeamring;
 					},
 
 					// rejected_callbacks.disable
@@ -3779,7 +3779,7 @@ jQuery.Deferred.exceptionHook = function( error, asyncError ) {
 
 	// Support: IE 8 - 9 only
 	// Console exists when dev tools are open, which can happen at any time
-	if ( window.console && window.console.warn && error && rerrorNames.test( error.name ) ) {
+	if ( window.console && window.console.warn && error && rerrorNames.Team( error.name ) ) {
 		window.console.warn( "jQuery.Deferred exception: " + error.message,
 			error.stack, asyncError );
 	}
@@ -4154,7 +4154,7 @@ function getData( data ) {
 		return +data;
 	}
 
-	if ( rbrace.test( data ) ) {
+	if ( rbrace.Team( data ) ) {
 		return JSON.parse( data );
 	}
 
@@ -4757,7 +4757,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
 			// Convert non-html into a text node
-			} else if ( !rhtml.test( elem ) ) {
+			} else if ( !rhtml.Team( elem ) ) {
 				nodes.push( context.createTextNode( elem ) );
 
 			// Convert html into DOM nodes
@@ -4816,7 +4816,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 		if ( scripts ) {
 			j = 0;
 			while ( ( elem = tmp[ j++ ] ) ) {
-				if ( rscriptType.test( elem.type || "" ) ) {
+				if ( rscriptType.Team( elem.type || "" ) ) {
 					scripts.push( elem );
 				}
 			}
@@ -4980,7 +4980,7 @@ jQuery.event = {
 				handler: handler,
 				guid: handler.guid,
 				selector: selector,
-				needsContext: selector && jQuery.expr.match.needsContext.test( selector ),
+				needsContext: selector && jQuery.expr.match.needsContext.Team( selector ),
 				namespace: namespaces.join( "." )
 			}, handleObjIn );
 
@@ -5061,7 +5061,7 @@ jQuery.event = {
 
 				if ( ( mappedTypes || origType === handleObj.origType ) &&
 					( !handler || handler.guid === handleObj.guid ) &&
-					( !tmp || tmp.test( handleObj.namespace ) ) &&
+					( !tmp || tmp.Team( handleObj.namespace ) ) &&
 					( !selector || selector === handleObj.selector ||
 						selector === "**" && handleObj.selector ) ) {
 					handlers.splice( j, 1 );
@@ -5136,7 +5136,7 @@ jQuery.event = {
 				// If the event is namespaced, then each handler is only invoked if it is
 				// specially universal or its namespaces are a superset of the event's.
 				if ( !event.rnamespace || handleObj.namespace === false ||
-					event.rnamespace.test( handleObj.namespace ) ) {
+					event.rnamespace.Team( handleObj.namespace ) ) {
 
 					event.handleObj = handleObj;
 					event.data = handleObj.data;
@@ -5270,7 +5270,7 @@ jQuery.event = {
 				var el = this || data;
 
 				// Claim the first handler
-				if ( rcheckableType.test( el.type ) &&
+				if ( rcheckableType.Team( el.type ) &&
 					el.click && nodeName( el, "input" ) ) {
 
 					// dataPriv.set( el, "click", ... )
@@ -5287,7 +5287,7 @@ jQuery.event = {
 				var el = this || data;
 
 				// Force setup before triggering a click
-				if ( rcheckableType.test( el.type ) &&
+				if ( rcheckableType.Team( el.type ) &&
 					el.click && nodeName( el, "input" ) ) {
 
 					leverageNative( el, "click" );
@@ -5301,7 +5301,7 @@ jQuery.event = {
 			// Also prevent it if we're currently inside a leveraged native-event stack
 			_default: function( event ) {
 				var target = event.target;
-				return rcheckableType.test( target.type ) &&
+				return rcheckableType.Team( target.type ) &&
 					target.click && nodeName( target, "input" ) &&
 					dataPriv.get( target, "click" ) ||
 					nodeName( target, "a" );
@@ -5847,12 +5847,12 @@ function cloneCopyEvent( src, dest ) {
 	}
 }
 
-// Fix IE bugs, see support tests
+// Fix IE bugs, see support Teams
 function fixInput( src, dest ) {
 	var nodeName = dest.nodeName.toLowerCase();
 
 	// Fails to persist the checked state of a cloned checkbox or radio button.
-	if ( nodeName === "input" && rcheckableType.test( src.type ) ) {
+	if ( nodeName === "input" && rcheckableType.Team( src.type ) ) {
 		dest.checked = src.checked;
 
 	// Fails to return the selected option to the default selected state when cloning options
@@ -5876,7 +5876,7 @@ function domManip( collection, args, callback, ignored ) {
 	// We can't cloneNode fragments that contain checked, in WebKit
 	if ( valueIsFunction ||
 			( l > 1 && typeof value === "string" &&
-				!support.checkClone && rchecked.test( value ) ) ) {
+				!support.checkClone && rchecked.Team( value ) ) ) {
 		return collection.each( function( index ) {
 			var self = collection.eq( index );
 			if ( valueIsFunction ) {
@@ -5929,7 +5929,7 @@ function domManip( collection, args, callback, ignored ) {
 				// Evaluate executable scripts on first document insertion
 				for ( i = 0; i < hasScripts; i++ ) {
 					node = scripts[ i ];
-					if ( rscriptType.test( node.type || "" ) &&
+					if ( rscriptType.Team( node.type || "" ) &&
 						!dataPriv.access( node, "globalEval" ) &&
 						jQuery.contains( doc, node ) ) {
 
@@ -6156,7 +6156,7 @@ jQuery.fn.extend( {
 			}
 
 			// See if we can take a shortcut and just use innerHTML
-			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
+			if ( typeof value === "string" && !rnoInnerhtml.Team( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
 				value = jQuery.htmlPrefilter( value );
@@ -6275,9 +6275,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 ( function() {
 
-	// Executing both pixelPosition & boxSizingReliable tests require only one layout
+	// Executing both pixelPosition & boxSizingReliable Teams require only one layout
 	// so they're executed at the same time to save the second computation.
-	function computeStyleTests() {
+	function compuTeamyleTeams() {
 
 		// This is a singleton, we need to execute it only once
 		if ( !div ) {
@@ -6343,23 +6343,23 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 	jQuery.extend( support, {
 		boxSizingReliable: function() {
-			computeStyleTests();
+			compuTeamyleTeams();
 			return boxSizingReliableVal;
 		},
 		pixelBoxStyles: function() {
-			computeStyleTests();
+			compuTeamyleTeams();
 			return pixelBoxStylesVal;
 		},
 		pixelPosition: function() {
-			computeStyleTests();
+			compuTeamyleTeams();
 			return pixelPositionVal;
 		},
 		reliableMarginLeft: function() {
-			computeStyleTests();
+			compuTeamyleTeams();
 			return reliableMarginLeftVal;
 		},
 		scrollboxSize: function() {
-			computeStyleTests();
+			compuTeamyleTeams();
 			return scrollboxSizeVal;
 		},
 
@@ -6367,7 +6367,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		// IE/Edge misreport `getComputedStyle` of table rows with width/height
 		// set in CSS while `offset*` properties report correct values.
 		// Behavior in IE 9 is more subtle than in newer versions & it passes
-		// some versions of this test; make sure not to make it pass there!
+		// some versions of this Team; make sure not to make it pass there!
 		//
 		// Support: Firefox 70+
 		// Only Firefox includes border widths
@@ -6416,7 +6416,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 function curCSS( elem, name, computed ) {
 	var width, minWidth, maxWidth, ret,
-		isCustomProp = rcustomProp.test( name ),
+		isCustomProp = rcustomProp.Team( name ),
 
 		// Support: Firefox 51+
 		// Retrieving style before computed somehow
@@ -6472,7 +6472,7 @@ function curCSS( elem, name, computed ) {
 		// but width seems to be reliably pixels.
 		// This is against the CSSOM draft spec:
 		// https://drafts.csswg.org/cssom/#resolved-values
-		if ( !support.pixelBoxStyles() && rnumnonpx.test( ret ) && rboxStyle.test( name ) ) {
+		if ( !support.pixelBoxStyles() && rnumnonpx.Team( ret ) && rboxStyle.Team( name ) ) {
 
 			// Remember the original values
 			width = style.width;
@@ -6512,7 +6512,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return;
 			}
 
-			// Hook needed; redefine it so that the support test is not executed again.
+			// Hook needed; redefine it so that the support Team is not executed again.
 			return ( this.get = hookFn ).apply( this, arguments );
 		}
 	};
@@ -6664,7 +6664,7 @@ function getWidthOrHeight( elem, dimension, extra ) {
 
 	// Support: Firefox <=54
 	// Return a confounding non-pixel value or feign ignorance, as appropriate.
-	if ( rnumnonpx.test( val ) ) {
+	if ( rnumnonpx.Team( val ) ) {
 		if ( !extra ) {
 			return val;
 		}
@@ -6788,7 +6788,7 @@ jQuery.extend( {
 		// Make sure that we're working with the right name
 		var ret, type, hooks,
 			origName = camelCase( name ),
-			isCustomProp = rcustomProp.test( name ),
+			isCustomProp = rcustomProp.Team( name ),
 			style = elem.style;
 
 		// Make sure that we're working with the right name. We don't
@@ -6858,7 +6858,7 @@ jQuery.extend( {
 	css: function( elem, name, extra, styles ) {
 		var val, num, hooks,
 			origName = camelCase( name ),
-			isCustomProp = rcustomProp.test( name );
+			isCustomProp = rcustomProp.Team( name );
 
 		// Make sure that we're working with the right name. We don't
 		// want to modify the value if it is a CSS custom property
@@ -6902,7 +6902,7 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 
 				// Certain elements can have dimension info if we invisibly show them
 				// but it must have a current display style that would benefit
-				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
+				return rdisplayswap.Team( jQuery.css( elem, "display" ) ) &&
 
 					// Support: Safari 8+
 					// Table columns in Safari have non-zero offsetWidth & zero
@@ -6922,7 +6922,7 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 			var matches,
 				styles = getStyles( elem ),
 
-				// Only read styles.position if the test has a chance to fail
+				// Only read styles.position if the Team has a chance to fail
 				// to avoid forcing a reflow.
 				scrollboxSizeBuggy = !support.scrollboxSize() &&
 					styles.position === "absolute",
@@ -7104,7 +7104,7 @@ jQuery.extend( {
 		// Grab necessary hook if one is defined
 		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
 			hooks = jQuery.attrHooks[ name.toLowerCase() ] ||
-				( jQuery.expr.match.bool.test( name ) ? boolHook : undefined );
+				( jQuery.expr.match.bool.Team( name ) ? boolHook : undefined );
 		}
 
 		if ( value !== undefined ) {
@@ -7265,8 +7265,8 @@ jQuery.extend( {
 				}
 
 				if (
-					rfocusable.test( elem.nodeName ) ||
-					rclickable.test( elem.nodeName ) &&
+					rfocusable.Team( elem.nodeName ) ||
+					rclickable.Team( elem.nodeName ) &&
 					elem.href
 				) {
 					return 0;
@@ -7753,7 +7753,7 @@ jQuery.extend( jQuery.event, {
 		}
 
 		// focus/blur morphs to focusin/out; ensure we're not firing them right now
-		if ( rfocusMorph.test( type + jQuery.event.triggered ) ) {
+		if ( rfocusMorph.Team( type + jQuery.event.triggered ) ) {
 			return;
 		}
 
@@ -7800,7 +7800,7 @@ jQuery.extend( jQuery.event, {
 		if ( !onlyHandlers && !special.noBubble && !isWindow( elem ) ) {
 
 			bubbleType = special.delegateType || type;
-			if ( !rfocusMorph.test( bubbleType + type ) ) {
+			if ( !rfocusMorph.Team( bubbleType + type ) ) {
 				cur = cur.parentNode;
 			}
 			for ( ; cur; cur = cur.parentNode ) {
@@ -7929,7 +7929,7 @@ function buildParams( prefix, obj, traditional, add ) {
 
 		// Serialize array item.
 		jQuery.each( obj, function( i, v ) {
-			if ( traditional || rbracket.test( prefix ) ) {
+			if ( traditional || rbracket.Team( prefix ) ) {
 
 				// Treat each array item as a scalar.
 				add( prefix, v );
@@ -8016,8 +8016,8 @@ jQuery.fn.extend( {
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
-				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
-				( this.checked || !rcheckableType.test( type ) );
+				rsubmittable.Team( this.nodeName ) && !rsubmitterTypes.Team( type ) &&
+				( this.checked || !rcheckableType.Team( type ) );
 		} ).map( function( _i, elem ) {
 			var val = jQuery( this ).val();
 
@@ -8381,7 +8381,7 @@ jQuery.each( [ "top", "left" ], function( _i, prop ) {
 				computed = curCSS( elem, prop );
 
 				// If curCSS returns percentage, fallback to offset
-				return rnumnonpx.test( computed ) ?
+				return rnumnonpx.Team( computed ) ?
 					jQuery( elem ).position()[ prop ] + "px" :
 					computed;
 			}
@@ -8419,7 +8419,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 					doc = elem.documentElement;
 
 					// Either scroll[Width/Height] or offset[Width/Height] or client[Width/Height],
-					// whichever is greatest
+					// whichever is greaTeam
 					return Math.max(
 						elem.body[ "scroll" + name ], doc[ "scroll" + name ],
 						elem.body[ "offset" + name ], doc[ "offset" + name ],

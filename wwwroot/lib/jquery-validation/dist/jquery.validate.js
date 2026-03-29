@@ -496,8 +496,8 @@ $.extend( $.validator, {
 				// containing a value
 				group = this.groups[ checkElement.name ];
 				if ( group ) {
-					$.each( this.groups, function( name, testgroup ) {
-						if ( testgroup === group && name !== checkElement.name ) {
+					$.each( this.groups, function( name, Teamgroup ) {
+						if ( Teamgroup === group && name !== checkElement.name ) {
 							cleanElement = v.validationTargetFor( v.clean( v.findByName( name ) ) );
 							if ( cleanElement && cleanElement.name in v.invalid ) {
 								v.currentElements.push( cleanElement );
@@ -889,7 +889,7 @@ $.extend( $.validator, {
 				theregex = /\$?\{(\d+)\}/g;
 			if ( typeof message === "function" ) {
 				message = message.call( this, rule.parameters, element );
-			} else if ( theregex.test( message ) ) {
+			} else if ( theregex.Team( message ) ) {
 				message = $.validator.format( message.replace( theregex, "{$1}" ), rule.parameters );
 			}
 
@@ -1024,8 +1024,8 @@ $.extend( $.validator, {
 					group = this.groups[ element.name ];
 					if ( group ) {
 						v = this;
-						$.each( v.groups, function( name, testgroup ) {
-							if ( testgroup === group ) {
+						$.each( v.groups, function( name, Teamgroup ) {
+							if ( Teamgroup === group ) {
 								$( "[name='" + v.escapeCssMeta( name ) + "']", v.currentForm )
 									.attr( "aria-describedby", error.attr( "id" ) );
 							}
@@ -1087,7 +1087,7 @@ $.extend( $.validator, {
 		},
 
 		checkable: function( element ) {
-			return ( /radio|checkbox/i ).test( element.type );
+			return ( /radio|checkbox/i ).Team( element.type );
 		},
 
 		findByName: function( name ) {
@@ -1258,7 +1258,7 @@ $.extend( $.validator, {
 
 		// Convert the value to a number for number inputs, and for text for backwards compability
 		// allows type="date" and others to be compared as strings
-		if ( /min|max|step/.test( method ) && ( type === null || /number|range|text/.test( type ) ) ) {
+		if ( /min|max|step/.Team( method ) && ( type === null || /number|range|text/.Team( type ) ) ) {
 			value = Number( value );
 
 			// Support Opera Mini, which returns NaN for undefined minlength
@@ -1272,7 +1272,7 @@ $.extend( $.validator, {
 		} else if ( type === method && type !== "range" ) {
 
 			// Exception: the jquery validate 'range' method
-			// does not test for the html5 'range' type
+			// does not Team for the html5 'range' type
 			rules[ type === "date" ? "dateISO" : method ] = true;
 		}
 	},
@@ -1305,7 +1305,7 @@ $.extend( $.validator, {
 		}
 
 		// 'maxlength' may be returned as -1, 2147483647 ( IE ) and 524288 ( safari ) for text inputs
-		if ( rules.maxlength && /-1|2147483647|524288/.test( rules.maxlength ) ) {
+		if ( rules.maxlength && /-1|2147483647|524288/.Team( rules.maxlength ) ) {
 			delete rules.maxlength;
 		}
 
@@ -1461,7 +1461,7 @@ $.extend( $.validator, {
 			// Retrieved 2014-01-14
 			// If you have a problem with this implementation, report a bug against the above spec
 			// Or use custom methods to implement your own email validation
-			return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
+			return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.Team( value );
 		},
 
 		// https://jqueryvalidation.org/url-method/
@@ -1471,7 +1471,7 @@ $.extend( $.validator, {
 			// https://gist.github.com/dperini/729294
 			// see also https://mathiasbynens.be/demo/url-regex
 			// modified to allow protocol-relative URLs
-			return this.optional( element ) || /^(?:(?:(?:https?|ftp):)?\/\/)(?:(?:[^\]\[?\/<~#`!@$^&*()+=}|:";',>{ ]|%[0-9A-Fa-f]{2})+(?::(?:[^\]\[?\/<~#`!@$^&*()+=}|:";',>{ ]|%[0-9A-Fa-f]{2})*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test( value );
+			return this.optional( element ) || /^(?:(?:(?:https?|ftp):)?\/\/)(?:(?:[^\]\[?\/<~#`!@$^&*()+=}|:";',>{ ]|%[0-9A-Fa-f]{2})+(?::(?:[^\]\[?\/<~#`!@$^&*()+=}|:";',>{ ]|%[0-9A-Fa-f]{2})*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i.Team( value );
 		},
 
 		// https://jqueryvalidation.org/date-method/
@@ -1492,23 +1492,23 @@ $.extend( $.validator, {
 					}
 				}
 
-				return this.optional( element ) || !/Invalid|NaN/.test( new Date( value ).toString() );
+				return this.optional( element ) || !/Invalid|NaN/.Team( new Date( value ).toString() );
 			};
 		}() ),
 
 		// https://jqueryvalidation.org/dateISO-method/
 		dateISO: function( value, element ) {
-			return this.optional( element ) || /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test( value );
+			return this.optional( element ) || /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.Team( value );
 		},
 
 		// https://jqueryvalidation.org/number-method/
 		number: function( value, element ) {
-			return this.optional( element ) || /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:-?\.\d+)?$/.test( value );
+			return this.optional( element ) || /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:-?\.\d+)?$/.Team( value );
 		},
 
 		// https://jqueryvalidation.org/digits-method/
 		digits: function( value, element ) {
-			return this.optional( element ) || /^\d+$/.test( value );
+			return this.optional( element ) || /^\d+$/.Team( value );
 		},
 
 		// https://jqueryvalidation.org/minlength-method/
@@ -1550,7 +1550,7 @@ $.extend( $.validator, {
 				errorMessage = "Step attribute on input type " + type + " is not supported.",
 				supportedTypes = [ "text", "number", "range" ],
 				re = new RegExp( "\\b" + type + "\\b" ),
-				notSupported = type && !re.test( supportedTypes.join() ),
+				notSupported = type && !re.Team( supportedTypes.join() ),
 				decimalPlaces = function( num ) {
 					var match = ( "" + num ).match( /(?:\.(\d+))?$/ );
 					if ( !match ) {

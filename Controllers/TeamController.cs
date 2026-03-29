@@ -4,11 +4,11 @@ using SportsApp2.Models;
 
 namespace SportsApp2.Controllers
 {
-    public class TestController : Controller
+    public class TeamController : Controller
     {
         private readonly BEHNDatabaseContext _context;
 
-        public TestController(BEHNDatabaseContext context)
+        public TeamController(BEHNDatabaseContext context)
         {
             _context = context;
         }
@@ -123,6 +123,61 @@ namespace SportsApp2.Controllers
             var team = _context.Nbateams
                 .Include(t => t.NbaseasonStat)
                 .FirstOrDefault(t => t.NbateamId == id);
+
+            var teamColors = new Dictionary<string, string>
+            {
+                { "Cardinals", "w3-food-cranberry" },
+                { "Falcons", "w3-vivid-red" },
+                { "Ravens", "w3-vivid-purplish-blue" },
+                { "Bills", "w3-info" },
+                { "Panthers", "w3-blue" },
+                { "Bears", "w3-vivid-reddish-orange" },
+                { "Bengals", "w3-vivid-orange" },
+                { "Browns", "w3-food-chocolate" },
+                { "Cowboys", "w3-highway-blue" },
+                { "Broncos", "w3-vivid-reddish-orange" },
+                { "Lions", "w3-blue" },
+                { "Packers", "w3-highway-green" },
+                { "Texans", "w3-signal-blue" },
+                { "Colts", "w3-info" },
+                { "Jaguars", "w3-vivid-bluish-green" },
+                { "Chiefs", "w3-food-cherry" },
+                { "Raiders", "w3-black" },
+                { "Chargers", "w3-blue" },
+                { "Rams", "w3-food-lemon" },
+                { "Dolphins", "w3-teal" },
+                { "Vikings", "w3-purple" },
+                { "Patriots", "w3-signal-blue" },
+                { "Saints", "w3-food-coffee" },
+                { "Giants", "w3-highway-blue" },
+                { "Jets", "w3-highway-green" },
+                { "Eagles", "w3-vivid-bluish-green" },
+                { "Steelers", "w3-vivid-yellow" },
+                { "49ers", "w3-vivid-red" },
+                { "Seahawks", "w3-food-apple" },
+                { "Buccaneers", "w3-danger" },
+                { "Titans", "w3-light-blue" },
+                { "Commanders", "w3-highway-red" }
+            };
+
+            ViewBag.TeamColors = teamColors;
+
+
+
+            if (team == null)
+            {
+                return Content("Team not found.");
+            }
+
+            return View(team);
+        }
+
+
+        public IActionResult NFLTeamStats(int id)
+        {
+            var team = _context.Nflteams
+                .Include(t => t.NflseasonStat)
+                .FirstOrDefault(t => t.NflteamId == id);
 
             var teamColors = new Dictionary<string, string>
             {
