@@ -5,6 +5,7 @@ wwwroot\Bears.png
 wwwroot\Bengals.png
 wwwroot\Bills.png
 wwwroot\Blazers - Copy.png
+wwwroot\Blazers.png
 wwwroot\Broncos.png
 wwwroot\Browns.png
 wwwroot\Buccaneers.png
@@ -136,7 +137,6 @@ wwwroot\Texans.png
 wwwroot\Thunder.png
 wwwroot\Timberwolves.png
 wwwroot\Titans.png
-wwwroot\Trailblazers.png
 wwwroot\Vikings.png
 wwwroot\Warriors.png
 wwwroot\Wizards.png
