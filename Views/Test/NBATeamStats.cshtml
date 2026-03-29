@@ -27,6 +27,8 @@
             
             .w3-card {
                 border-radius: 15px; 
+                width: 300px;
+                min-height: 150px;
                 
             }
 
@@ -105,7 +107,7 @@
 
         <div class="w3-row-padding">
             <div class="w3-third w3-margin-bottom">
-                    <div class="w3-card @teamColor w3-padding">                          
+                    <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 150px;">                          
                         <h3 class="player-name">General Info</h3>
                         <p>Abbreviation: <span class="badge badge-info">@Model.Abbreviation</span></p>
                         <p>Conference: <span class="badge badge-primary">@Model.Conference</span></p>
@@ -114,26 +116,29 @@
                     </div>
                 </div>
         <div class="w3-third w3-margin-bottom">
-                    <div class="w3-card @teamColor w3-padding">                          
-                        <h3 class="player-name">Win/Loss</h3>
-                        <div class="w3-container w3-center">
-                        <p><span class="badge badge-success">@Model.Wins</span>  <span class="badge badge-danger">@Model.Losses</span></p>
-                        </div>
-                        
-                    </div>
+            <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 150px;">                          
+
+                <h3 class="player-name">Win/Loss</h3>
+
+                <div class="w3-container w3-center">
+                    <p>
+                        <span class="badge badge-success">@Model.Wins</span>  
+                        <span class="badge badge-danger">@Model.Losses</span>
+                    </p>
                 </div>
 
-                 <div class="w3-third w3-margin-bottom">
-                      <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="@Model.NbateamId">
-                    <div class="w3-card @teamColor w3-padding">                          
-                        
-                        <div class="w3-container w3-center">
-                           
-                       <h3 class="player-name">Players</h3>
-                       
+            </div>
+        </div>
+
+                    <div class="w3-third w3-margin-bottom">
+                  <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="@Model.NbateamId">
+                    <div class="w3-card @teamColor w3-padding w3-hover-opacity" style="display: flex; justify-content: center; align-items: center; height: 150px;">
+      
+                      <h3 class="player-name">Players</h3>
+      
                     </div>
-                   
-                </div>  </a>
+                  </a>
+                </div>
         </div>
         </div>
 
