@@ -23,82 +23,194 @@ namespace SportsApp2.Controllers
 
         public IActionResult Page1()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
 
         public IActionResult Page2()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult Page3()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult Page4()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult Page5()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult Page6()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult Page7()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NBAPage1()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NBAPage2()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NBAPage3()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NBAPage4()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NFLPage1()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NFLPage2()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NFLPage3()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult NFLPage4()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
         public IActionResult Search(string searchTerm)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
                 return RedirectToAction("Page1");
@@ -155,6 +267,13 @@ namespace SportsApp2.Controllers
 
         public IActionResult Account()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
@@ -321,6 +440,13 @@ namespace SportsApp2.Controllers
 
         public IActionResult UpcomingEventsHTML(string category)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             List<UpcomingEvents> events = new List<UpcomingEvents>();
 
             string filePath = Path.Combine(_environment.ContentRootPath, "Data", "AllUpcomingEvents.xlsx");
