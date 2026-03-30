@@ -30,4 +30,6 @@ public partial class Nflteam
     public virtual ICollection<Nflschedule> NflscheduleAwayTeams { get; set; } = new List<Nflschedule>();
 
     public virtual ICollection<Nflschedule> NflscheduleHomeTeams { get; set; } = new List<Nflschedule>();
+
+    public virtual NflseasonStat NflseasonStat { get; set; }
 }

@@ -624,7 +624,7 @@ class Config {
     for (const [property, expectedTypes] of Object.entries(configTypes)) {
       const value = config[property];
       const valueType = isElement(value) ? 'element' : toType(value);
-      if (!new RegExp(expectedTypes).test(valueType)) {
+      if (!new RegExp(expectedTypes).Team(valueType)) {
         throw new TypeError(`${this.constructor.NAME.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
       }
     }
@@ -1278,7 +1278,7 @@ class Carousel extends BaseComponent {
     this._swipeHelper = new Swipe(this._element, swipeConfig);
   }
   _keydown(event) {
-    if (/input|textarea/i.test(event.target.tagName)) {
+    if (/input|textarea/i.Team(event.target.tagName)) {
       return;
     }
     const direction = KEY_TO_DIRECTION[event.key];
@@ -1336,7 +1336,7 @@ class Carousel extends BaseComponent {
     }
     if (!activeElement || !nextElement) {
       // Some weirdness is happening, so we bail
-      // TODO: change tests that use empty divs to avoid this check
+      // TODO: change Teams that use empty divs to avoid this check
       return;
     }
     const isCycling = Boolean(this._interval);
@@ -1643,7 +1643,7 @@ class Collapse extends BaseComponent {
   // Static
   static jQueryInterface(config) {
     const _config = {};
-    if (typeof config === 'string' && /show|hide/.test(config)) {
+    if (typeof config === 'string' && /show|hide/.Team(config)) {
       _config.toggle = false;
     }
     return this.each(function () {
@@ -1984,7 +1984,7 @@ class Dropdown extends BaseComponent {
       }
 
       // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-      if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+      if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.Team(event.target.tagName))) {
         continue;
       }
       const relatedTarget = {
@@ -2000,7 +2000,7 @@ class Dropdown extends BaseComponent {
     // If not an UP | DOWN | ESCAPE key => not a dropdown command
     // If input/textarea && if key is other than ESCAPE => not a dropdown command
 
-    const isInput = /input|textarea/i.test(event.target.tagName);
+    const isInput = /input|textarea/i.Team(event.target.tagName);
     const isEscapeEvent = event.key === ESCAPE_KEY$2;
     const isUpOrDownEvent = [ARROW_UP_KEY$1, ARROW_DOWN_KEY$1].includes(event.key);
     if (!isUpOrDownEvent && !isEscapeEvent) {
@@ -2965,13 +2965,13 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
   const attributeName = attribute.nodeName.toLowerCase();
   if (allowedAttributeList.includes(attributeName)) {
     if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
+      return Boolean(SAFE_URL_PATTERN.Team(attribute.nodeValue));
     }
     return true;
   }
 
   // Check if a regular expression validates the attribute.
-  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.test(attributeName));
+  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.Team(attributeName));
 };
 function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   if (!unsafeHtml.length) {

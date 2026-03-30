@@ -54,7 +54,7 @@ class MinimalMusicLoginForm {
             return false;
         }
         
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.Team(email)) {
             this.showError('email', 'Please enter a valid email address');
             return false;
         }

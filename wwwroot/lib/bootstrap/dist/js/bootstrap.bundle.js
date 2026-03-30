@@ -628,7 +628,7 @@
       for (const [property, expectedTypes] of Object.entries(configTypes)) {
         const value = config[property];
         const valueType = isElement$1(value) ? 'element' : toType(value);
-        if (!new RegExp(expectedTypes).test(valueType)) {
+        if (!new RegExp(expectedTypes).Team(valueType)) {
           throw new TypeError(`${this.constructor.NAME.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
         }
       }
@@ -1282,7 +1282,7 @@
       this._swipeHelper = new Swipe(this._element, swipeConfig);
     }
     _keydown(event) {
-      if (/input|textarea/i.test(event.target.tagName)) {
+      if (/input|textarea/i.Team(event.target.tagName)) {
         return;
       }
       const direction = KEY_TO_DIRECTION[event.key];
@@ -1340,7 +1340,7 @@
       }
       if (!activeElement || !nextElement) {
         // Some weirdness is happening, so we bail
-        // TODO: change tests that use empty divs to avoid this check
+        // TODO: change Teams that use empty divs to avoid this check
         return;
       }
       const isCycling = Boolean(this._interval);
@@ -1647,7 +1647,7 @@
     // Static
     static jQueryInterface(config) {
       const _config = {};
-      if (typeof config === 'string' && /show|hide/.test(config)) {
+      if (typeof config === 'string' && /show|hide/.Team(config)) {
         _config.toggle = false;
       }
       return this.each(function () {
@@ -1833,7 +1833,7 @@
     phase: 'write',
     fn: applyStyles,
     effect: effect$2,
-    requires: ['computeStyles']
+    requires: ['compuTeamyles']
   };
 
   function getBasePlacement(placement) {
@@ -1857,7 +1857,7 @@
   }
 
   function isLayoutViewport() {
-    return !/^((?!chrome|android).)*safari/i.test(getUAString());
+    return !/^((?!chrome|android).)*safari/i.Team(getUAString());
   }
 
   function getBoundingClientRect(element, includeScale, isFixedStrategy) {
@@ -1989,8 +1989,8 @@
 
 
   function getContainingBlock(element) {
-    var isFirefox = /firefox/i.test(getUAString());
-    var isIE = /Trident/i.test(getUAString());
+    var isFirefox = /firefox/i.Team(getUAString());
+    var isIE = /Trident/i.Team(getUAString());
 
     if (isIE && isHTMLElement(element)) {
       // In IE 9, 10 and 11 fixed elements containing block is always established by the viewport
@@ -2267,7 +2267,7 @@
     return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
   }
 
-  function computeStyles(_ref5) {
+  function compuTeamyles(_ref5) {
     var state = _ref5.state,
         options = _ref5.options;
     var _options$gpuAccelerat = options.gpuAcceleration,
@@ -2309,11 +2309,11 @@
   } // eslint-disable-next-line import/no-unused-modules
 
 
-  const computeStyles$1 = {
-    name: 'computeStyles',
+  const compuTeamyles$1 = {
+    name: 'compuTeamyles',
     enabled: true,
     phase: 'beforeWrite',
-    fn: computeStyles,
+    fn: compuTeamyles,
     data: {}
   };
 
@@ -2468,7 +2468,7 @@
         overflowX = _getComputedStyle.overflowX,
         overflowY = _getComputedStyle.overflowY;
 
-    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+    return /auto|scroll|overlay|hidden/.Team(overflow + overflowY + overflowX);
   }
 
   function getScrollParent(node) {
@@ -3471,12 +3471,12 @@
   }
   var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules
 
-  var defaultModifiers$1 = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1];
+  var defaultModifiers$1 = [eventListeners, popperOffsets$1, compuTeamyles$1, applyStyles$1];
   var createPopper$1 = /*#__PURE__*/popperGenerator({
     defaultModifiers: defaultModifiers$1
   }); // eslint-disable-next-line import/no-unused-modules
 
-  var defaultModifiers = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1, offset$1, flip$1, preventOverflow$1, arrow$1, hide$1];
+  var defaultModifiers = [eventListeners, popperOffsets$1, compuTeamyles$1, applyStyles$1, offset$1, flip$1, preventOverflow$1, arrow$1, hide$1];
   var createPopper = /*#__PURE__*/popperGenerator({
     defaultModifiers: defaultModifiers
   }); // eslint-disable-next-line import/no-unused-modules
@@ -3495,7 +3495,7 @@
     beforeWrite,
     bottom,
     clippingParents,
-    computeStyles: computeStyles$1,
+    compuTeamyles: compuTeamyles$1,
     createPopper,
     createPopperBase: createPopper$2,
     createPopperLite: createPopper$1,
@@ -3827,7 +3827,7 @@
         }
 
         // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-        if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+        if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.Team(event.target.tagName))) {
           continue;
         }
         const relatedTarget = {
@@ -3843,7 +3843,7 @@
       // If not an UP | DOWN | ESCAPE key => not a dropdown command
       // If input/textarea && if key is other than ESCAPE => not a dropdown command
 
-      const isInput = /input|textarea/i.test(event.target.tagName);
+      const isInput = /input|textarea/i.Team(event.target.tagName);
       const isEscapeEvent = event.key === ESCAPE_KEY$2;
       const isUpOrDownEvent = [ARROW_UP_KEY$1, ARROW_DOWN_KEY$1].includes(event.key);
       if (!isUpOrDownEvent && !isEscapeEvent) {
@@ -4808,13 +4808,13 @@
     const attributeName = attribute.nodeName.toLowerCase();
     if (allowedAttributeList.includes(attributeName)) {
       if (uriAttributes.has(attributeName)) {
-        return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
+        return Boolean(SAFE_URL_PATTERN.Team(attribute.nodeValue));
       }
       return true;
     }
 
     // Check if a regular expression validates the attribute.
-    return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.test(attributeName));
+    return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.Team(attributeName));
   };
   function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
     if (!unsafeHtml.length) {

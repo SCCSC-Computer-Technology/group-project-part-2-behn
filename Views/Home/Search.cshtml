@@ -130,8 +130,8 @@
                             {
                                 <div class="w3-third w3-center" style="margin-bottom:15px;">
 
-                                    <a asp-controller="Test"
-                                           asp-action="TeamPlayers"
+                                    <a asp-controller="Team"
+                                           asp-action="NBATeamStats"
                                            asp-route-id="@team.NbateamId">
 
                                         <img src="~/@(team.TeamName.Split(' ').Last()).png"
@@ -163,8 +163,8 @@
                             {
                                 <div class="w3-third w3-center" style="margin-bottom:15px;">
 
-                                    <a asp-controller="Test"
-                                           asp-action="NFLTeamPlayers"
+                                    <a asp-controller="Team"
+                                           asp-action="NFLTeamStats"
                                            asp-route-id="@team.NflteamId">
 
                                         <img src="~/@(team.TeamName.Split(' ').Last()).png"

@@ -115,7 +115,7 @@ modalFade {
     </style>
 </head>
 <body>
-    <!-- Sidebar/menu -->
+     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
         <br>
         <div class="w3-container">
@@ -130,6 +130,9 @@ modalFade {
                 <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
                 <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
                 <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+                <a asp-controller="Home" asp-action="UpcomingEventsHTML" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-calendar fa-fw w3-margin-right"></i>UPCOMING EVENTS
+                </a>
 
             </div>
             <div class="w3-panel w3-large">
@@ -235,7 +238,7 @@ modalFade {
                                     else if (Model.FavNflid == 3)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="3">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="3">
                                                 <img src="~/Ravens.png" alt="Ravens"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -245,7 +248,7 @@ modalFade {
                                     else if (Model.FavNflid == 26)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="26">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="26">
                                                 <img src="~/Eagles.png" alt="Eagles"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -255,7 +258,7 @@ modalFade {
                                     else if (Model.FavNflid == 27 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="27">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="27">
                                                 <img src="~/Steelers.png" alt="Steelers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -265,7 +268,7 @@ modalFade {
                                     else if (Model.FavNflid == 32 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="32">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="32">
                                                 <img src="~/Commanders.png" alt="Commanders"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -275,7 +278,7 @@ modalFade {
                                     else if (Model.FavNflid == 25 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="25">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="25">
                                                 <img src="~/Jets.png" alt="Jets"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -285,7 +288,7 @@ modalFade {
                                      else if (Model.FavNflid == 24 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="24">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="24">
                                                 <img src="~/Giants.png" alt="Giants"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -295,7 +298,7 @@ modalFade {
                                      else if (Model.FavNflid == 4 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="4">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="4">
                                                 <img src="~/Bills.png" alt="Bills"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -305,7 +308,7 @@ modalFade {
                                      else if (Model.FavNflid == 5 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="5">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="5">
                                                 <img src="~/Panthers.png" alt="Panthers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -315,7 +318,7 @@ modalFade {
                                      else if (Model.FavNflid == 2 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="2">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="2">
                                                 <img src="~/Falcons.png" alt="Falcons"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -325,7 +328,7 @@ modalFade {
                                      else if (Model.FavNflid == 15 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="15">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="15">
                                                 <img src="~/Jaguars.png" alt="Jaguars"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -335,7 +338,7 @@ modalFade {
                                      else if (Model.FavNflid == 20 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="20">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="20">
                                                 <img src="~/Dolphins.png" alt="Dolphins"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -345,7 +348,7 @@ modalFade {
                                      else if (Model.FavNflid == 30 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="30">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="30">
                                                 <img src="~/Buccaneers.png" alt="Buccaneers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -355,7 +358,7 @@ modalFade {
                                      else if (Model.FavNflid == 9 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="9">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="9">
                                                 <img src="~/Cowboys.png" alt="Cowboys"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -365,7 +368,7 @@ modalFade {
                                      else if (Model.FavNflid == 13 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="13">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="13">
                                                 <img src="~/Texans.png" alt="Texans"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -375,7 +378,7 @@ modalFade {
                                      else if (Model.FavNflid == 17 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="17">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="17">
                                                 <img src="~/Raiders.png" alt="Raiders"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -385,7 +388,7 @@ modalFade {
                                      else if (Model.FavNflid == 11 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="11">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="11">
                                                 <img src="~/Lions.png" alt="Lions"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -395,7 +398,7 @@ modalFade {
                                      else if (Model.FavNflid == 6 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="6">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="6">
                                                 <img src="~/Bears.png" alt="Bears"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -405,7 +408,7 @@ modalFade {
                                      else if (Model.FavNflid == 12 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="12">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="12">
                                                 <img src="~/Green Bay.png" alt="Packers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -415,7 +418,7 @@ modalFade {
                                      else if (Model.FavNflid == 7 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="7">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="7">
                                                 <img src="~/Bengals.png" alt="Bengals"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -425,7 +428,7 @@ modalFade {
                                      else if (Model.FavNflid == 14 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="14">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="14">
                                                 <img src="~/Colts.png" alt="Colts"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -435,7 +438,7 @@ modalFade {
                                      else if (Model.FavNflid == 8 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="8">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="8">
                                                 <img src="~/Browns.png" alt="Browns"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -445,7 +448,7 @@ modalFade {
                                      else if (Model.FavNflid == 16 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="16">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="16">
                                                 <img src="~/Chiefs.png" alt="Chiefs"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -455,7 +458,7 @@ modalFade {
                                      else if (Model.FavNflid == 21 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="21">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="21">
                                                 <img src="~/Vikings.png" alt="Vikings"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -465,7 +468,7 @@ modalFade {
                                      else if (Model.FavNflid == 1 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="1">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="1">
                                                 <img src="~/Cardinals.png" alt="Cardinals"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -475,7 +478,7 @@ modalFade {
                                      else if (Model.FavNflid == 19 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="19">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="19">
                                                 <img src="~/Rams.png" alt="Rams"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -485,7 +488,7 @@ modalFade {
                                      else if (Model.FavNflid == 18 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="18">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="18">
                                                 <img src="~/Chargers.png" alt="Chargers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -495,7 +498,7 @@ modalFade {
                                      else if (Model.FavNflid == 28 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="28">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="28">
                                                 <img src="~/49ers.png" alt="49ers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -505,7 +508,7 @@ modalFade {
                                      else if (Model.FavNflid == 10 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="10">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="10">
                                                 <img src="~/Broncos.png" alt="Broncos"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -515,7 +518,7 @@ modalFade {
                                       else if (Model.FavNflid == 23 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="23">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="23">
                                                 <img src="~/Saints.png" alt="Saints"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -525,7 +528,7 @@ modalFade {
                                       else if (Model.FavNflid == 22 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="22">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="22">
                                                 <img src="~/Patriots.png" alt="Patriots"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -535,7 +538,7 @@ modalFade {
                                       else if (Model.FavNflid == 31 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="31">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="31">
                                                 <img src="~/Titans.png" alt="Titans"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -545,7 +548,7 @@ modalFade {
                                       else if (Model.FavNflid == 29 )
                                     {
                                        <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="NFLTeamPlayers" asp-route-id="29">
+                                            <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="29">
                                                 <img src="~/Seahawks.png" alt="Seahawks"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -570,7 +573,7 @@ modalFade {
                                     else if (Model.FavNbaid == 1)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="1">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="1">
                                                 <img src="~/Hawks.png" alt="Hawks"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -580,7 +583,7 @@ modalFade {
                                      else if (Model.FavNbaid == 2)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="2">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="2">
                                                 <img src="~/Celtics.png" alt="Hawks"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -590,7 +593,7 @@ modalFade {
                                      else if (Model.FavNbaid == 3)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="3">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="3">
                                                 <img src="~/Nets.png" alt="Nets"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -600,7 +603,7 @@ modalFade {
                                      else if (Model.FavNbaid == 4)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="4">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="4">
                                                 <img src="~/Hornets.png" alt="Charlotte Hornets"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -610,7 +613,7 @@ modalFade {
                                      else if (Model.FavNbaid == 5)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="5">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="5">
                                                 <img src="~/Bulls.png" alt="Chicago Bulls"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -620,7 +623,7 @@ modalFade {
                                      else if (Model.FavNbaid == 6)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="6">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="6">
                                                 <img src="~/Cavaliers.png" alt="Cavaliers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -630,7 +633,7 @@ modalFade {
                                      else if (Model.FavNbaid == 7)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="7">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="7">
                                                 <img src="~/Mavericks.png" alt="Mavericks"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -640,7 +643,7 @@ modalFade {
                                      else if (Model.FavNbaid == 8)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="8">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="8">
                                                 <img src="~/Nuggets.png" alt="Nuggets"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -650,7 +653,7 @@ modalFade {
                                      else if (Model.FavNbaid == 9)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="9">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="9">
                                                 <img src="~/Pistons.png" alt="Pistons"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -660,7 +663,7 @@ modalFade {
                                      else if (Model.FavNbaid == 10)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="10">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="10">
                                                 <img src="~/Warriors.png" alt="Warriors"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -670,7 +673,7 @@ modalFade {
                                      else if (Model.FavNbaid == 11)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="11">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="11">
                                                 <img src="~/Rockets.png" alt="Rockets"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -680,7 +683,7 @@ modalFade {
                                      else if (Model.FavNbaid == 12)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="12">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="12">
                                                 <img src="~/Pacers.png" alt="Pacers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -690,7 +693,7 @@ modalFade {
                                      else if (Model.FavNbaid == 13)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="13">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="13">
                                                 <img src="~/Clippers.png" alt="Clippers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -700,7 +703,7 @@ modalFade {
                                      else if (Model.FavNbaid == 14)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="14">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="14">
                                                 <img src="~/Lakers.png" alt="Lakers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -710,7 +713,7 @@ modalFade {
                                      else if (Model.FavNbaid == 15)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="15">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="15">
                                                 <img src="~/Grizzlies.png" alt="Grizzlies"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -720,7 +723,7 @@ modalFade {
                                      else if (Model.FavNbaid == 16)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="16">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="16">
                                                 <img src="~/Heat.png" alt="Heat"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -730,7 +733,7 @@ modalFade {
                                      else if (Model.FavNbaid == 17)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="17">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="17">
                                                 <img src="~/Bucks.png" alt="Bucks"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -740,7 +743,7 @@ modalFade {
                                      else if (Model.FavNbaid == 18)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="18">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="18">
                                                 <img src="~/Timberwolves.png" alt="Timberwolves"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -750,7 +753,7 @@ modalFade {
                                      else if (Model.FavNbaid == 19)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="19">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="19">
                                                 <img src="~/Pelicans.png" alt="Pelicans"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -760,7 +763,7 @@ modalFade {
                                      else if (Model.FavNbaid == 20)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="20">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="20">
                                                 <img src="~/Knicks.png" alt="Knicks"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -770,7 +773,7 @@ modalFade {
                                      else if (Model.FavNbaid == 21)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="21">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="21">
                                                 <img src="~/Thunder.png" alt="Thunder"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -780,7 +783,7 @@ modalFade {
                                      else if (Model.FavNbaid == 22)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="22">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="22">
                                                 <img src="~/Magic.png" alt="Magic"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -790,7 +793,7 @@ modalFade {
                                      else if (Model.FavNbaid == 23)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="23">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="23">
                                                 <img src="~/76ers.png" alt="76ers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -800,7 +803,7 @@ modalFade {
                                      else if (Model.FavNbaid == 24)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="24">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="24">
                                                 <img src="~/Suns.png" alt="Suns"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -810,7 +813,7 @@ modalFade {
                                      else if (Model.FavNbaid == 25)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="25">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="25">
                                                 <img src="~/Trailblazers.png" alt="Trail Blazers"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -820,7 +823,7 @@ modalFade {
                                      else if (Model.FavNbaid == 26)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="26">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="26">
                                                 <img src="~/Kings.png" alt="Kings"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -830,7 +833,7 @@ modalFade {
                                      else if (Model.FavNbaid == 27)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="27">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="27">
                                                 <img src="~/Spurs.png" alt="Spurs"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -840,7 +843,7 @@ modalFade {
                                      else if (Model.FavNbaid == 28)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="28">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="28">
                                                 <img src="~/Raptors.png" alt="Raptors"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -850,7 +853,7 @@ modalFade {
                                      else if (Model.FavNbaid == 29)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="29">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="29">
                                                 <img src="~/Jazz.png" alt="Jazz"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
@@ -860,7 +863,7 @@ modalFade {
                                      else if (Model.FavNbaid == 30)
                                     {
                                         <div class="w3-container w3-center">
-                                            <a asp-controller="Test" asp-action="TeamPlayers" asp-route-id="30">
+                                            <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="30">
                                                 <img src="~/Wizards.png" alt="Wizards"
                                                 style="max-width:200px; max-height:200px;" class="w3-hover-opacity" />
                                             </a>
