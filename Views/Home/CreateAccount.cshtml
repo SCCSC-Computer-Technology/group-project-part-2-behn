@@ -5,15 +5,24 @@
     ViewData["Title"] = "Create Account";
 }
 
-<title>Sports Managment -Create Account</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sports Managment -Login</title>
-<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div asp-validation-summary="All"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Managment - Create Account</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div asp-validation-summary="All"></div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
@@ -30,6 +39,9 @@
             <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
             <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
             <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+            <a asp-controller="Home" asp-action="UpcomingEventsHTML" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-calendar fa-fw w3-margin-right"></i>UPCOMING EVENTS
+                </a>
 
         </div>
         <div class="w3-panel w3-large">
@@ -48,10 +60,7 @@
     <div class="main-content">
         <div class="login-container">
             <div class="login-card">
-                <div class="login-header">
-                    <div class="logo">
-                        <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
-                        </div>
+                <div class="login-header">                    
                         <h1>Create Account</h1>
                         <p>Welcome to the team!</p>
                     </div>
@@ -85,23 +94,48 @@
 
                         <div class="form-group">
                         <label>Profile Picture</label>
-                        <input asp-for="ProfileImage" type="file" class=" = fileInput" id="fileInput" onchange="previewFile(this)" />
+                        <input asp-for="ProfileImage" type="file" class="fileInput" id="fileInput" onchange="previewFile(this)" />
                         </div>
                         <img id="imagePreview" src="#" alt="File preview" style="display: none; max-width: 200px;" />
 
                         <button type="submit" class="login-btn">Create Account</button>
 
-                        @section Scripts {
-                            <partial name="_ValidationScriptsPartial" />
-                        }
+                        
 
                         <div class="signup-link">
                             <p>Already have an account? <a asp-controller="Home" asp-action="Login">Login</a></p>
                         </div>
+
                     </form>
                  </div>
-             </div>
+             </div>              
         </div>
+
+        <footer style="margin-top:auto;">
+
+                <!-- Top footer -->
+                <div style="background:#011d4a; color:white; padding:25px 30px; text-align:center;">
+                    <p style="font-size:14px; line-height:1.6; margin:0;">
+                        Gambling problem? Call 1-800-GAMBLER. Please gamble responsibly. Terms and eligibility restrictions apply.
+                    </p>
+
+                    <p style="margin-top:15px; margin-bottom:0;">
+                        © 2026 Sports Application, LLC. All rights reserved.
+                    </p>
+                </div>
+
+                <!-- Bottom footer -->
+                <div style="background:black; color:white; padding:15px 30px; text-align:center;">
+                    <h5 style="margin-top:0;">Sports Application</h5>
+                    <p style="margin:5px 0;">
+                        <a href="mailto:sportsapplication206@gmail.com" style="color:white;">
+                            sportsapplication206@gmail.com
+                        </a>
+                    </p>
+                </div>
+
+            </footer>
+
         <script>    
             function previewFile(input) {
     var file = input.files[0];
@@ -136,3 +170,8 @@
     }
 }
         </script>
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+                        }
+        </body>
+</html>

@@ -107,11 +107,14 @@
                 <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
                     <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
                 </a>
-                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
+                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
                     <i class="fa fa-user fa-fw w3-margin-right"></i>USER
                 </a>
                 <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
                     <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
+                </a>
+                <a asp-controller="Home" asp-action="UpcomingEventsHTML" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
+                    <i class="fa fa-calendar fa-fw w3-margin-right"></i>UPCOMING EVENTS
                 </a>
             </div>
 
@@ -160,14 +163,14 @@
                                asp-action="UpcomingEventsHTML"
                                asp-route-category="NFL"
                                class="w3-button @(ViewBag.SelectedCategory == "NFL" ? "w3-black" : "w3-white")">
-                            <i class="fa fa-football w3-margin-right"></i>NFL
+                            NFL
                         </a>
 
                         <a asp-controller="Home"
                                asp-action="UpcomingEventsHTML"
                                asp-route-category="NBA"
                                class="w3-button @(ViewBag.SelectedCategory == "NBA" ? "w3-black" : "w3-white")">
-                            <i class="fa fa-dribbble w3-margin-right"></i>NBA
+                            NBA
                         </a>
 
                         <input type="text" placeholder="Search.." name="search">

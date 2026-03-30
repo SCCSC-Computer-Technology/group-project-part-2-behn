@@ -150,6 +150,7 @@ C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\rjsmcsht
 C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\scopedcss\bundle\SportsApp2.styles.css
 C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\scopedcss\projectbundle\SportsApp2.bundle.scp.css
+C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\compressed\d7yrg42tdt-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\compressed\hissxpry87-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\compressed\ogx753fycg-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\compressed\5lrd0fmtui-{0}-t1cqhe9u97-t1cqhe9u97.gz
@@ -1080,7 +1081,6 @@ C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\rjsmcshtml.dswa.ca
 C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\scopedcss\bundle\SportsApp2.styles.css
 C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\scopedcss\projectbundle\SportsApp2.bundle.scp.css
-C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\compressed\rhj091mrb9-{0}-trswbay4te-trswbay4te.gz
 C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\compressed\hissxpry87-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\compressed\ogx753fycg-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\compressed\5lrd0fmtui-{0}-t1cqhe9u97-t1cqhe9u97.gz
@@ -1403,12 +1403,4 @@ C:\Users\masly\OneDrive\Documents\GitHub\group-project-part-2-behn\bin\Debug\net
 C:\Users\masly\OneDrive\Documents\GitHub\group-project-part-2-behn\bin\Debug\net10.0\SixLabors.Fonts.dll
 C:\Users\masly\OneDrive\Documents\GitHub\group-project-part-2-behn\bin\Debug\net10.0\System.IO.Packaging.dll
 C:\Users\masly\OneDrive\Documents\GitHub\group-project-part-2-behn\obj\Debug\net10.0\compressed\d7yrg42tdt-{0}-revayhfp2d-revayhfp2d.gz
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\ClosedXML.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\ClosedXML.Parser.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\ExcelNumberFormat.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\RBush.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\SixLabors.Fonts.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\bin\Debug\net10.0\System.IO.Packaging.dll
-C:\Users\briea\source\repos\group-project-part-2-behn\obj\Debug\net10.0\compressed\d7yrg42tdt-{0}-revayhfp2d-revayhfp2d.gz
+C:\Group-Project2\group-project-part-2-behn\obj\Debug\net10.0\compressed\rhj091mrb9-{0}-537xg6f98b-537xg6f98b.gz
