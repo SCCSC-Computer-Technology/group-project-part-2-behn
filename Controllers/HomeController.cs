@@ -389,6 +389,28 @@ namespace SportsApp2.Controllers
             return RedirectToAction("User");
         }
 
+
+        [HttpPost]
+        public IActionResult ResetFavoriteTeams()
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var user = _context.User.FirstOrDefault(u => u.UserId == userId);
+
+            if (user != null)
+            {
+                user.FavNflid = null;
+                user.FavNbaid = null;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("User");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAccount(CreateAccount model)
