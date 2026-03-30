@@ -15,6 +15,14 @@ namespace SportsApp2.Controllers
 
         public IActionResult TeamPlayers(int id)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+
             var team = _context.Nbateams
                 .Include(t => t.Nbaplayers)
                 .FirstOrDefault(t => t.NbateamId == id);
@@ -47,7 +55,7 @@ namespace SportsApp2.Controllers
                 { "Jazz", "w3-deep-purple" },
                 { "Wizards", "w3-food-strawberry" },
                 { "Hawks", "w3-red" },
-                { "Blazers", "w3-red" },
+                { "Trailblazers", "w3-red" },
                 { "Cavaliers", "w3-food-wine" },
                 { "Grizzlies", "w3-asphalt" },
                 { "Nuggets", "w3-amber" }
@@ -68,6 +76,14 @@ namespace SportsApp2.Controllers
         //Nfl filtering for players
         public IActionResult NFLTeamPlayers(int id)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+
             var team = _context.Nflteams
                 .Include(t => t.Nflplayers)
                 .FirstOrDefault(t => t.NflteamId == id);
@@ -100,7 +116,7 @@ namespace SportsApp2.Controllers
                 { "Giants", "w3-highway-blue" },
                 { "Jets", "w3-highway-green" },
                 { "Eagles", "w3-vivid-bluish-green" },
-                { "Steelers", "w3-vivid-yellow" },
+                { "Steelers", "w3-food-mustard" },
                 { "49ers", "w3-vivid-red" },
                 { "Seahawks", "w3-food-apple" },
                 { "Buccaneers", "w3-danger" },
@@ -120,6 +136,14 @@ namespace SportsApp2.Controllers
 
         public IActionResult NBATeamStats(int id)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+
             var team = _context.Nbateams
                 .Include(t => t.NbaseasonStat)
                 .FirstOrDefault(t => t.NbateamId == id);
@@ -152,7 +176,7 @@ namespace SportsApp2.Controllers
                 { "Jazz", "w3-deep-purple" },
                 { "Wizards", "w3-food-strawberry" },
                 { "Hawks", "w3-red" },
-                { "Blazers", "w3-red" },
+                { "Trailblazers", "w3-red" },
                 { "Cavaliers", "w3-food-wine" },
                 { "Grizzlies", "w3-asphalt" },
                 { "Nuggets", "w3-amber" }
@@ -173,6 +197,13 @@ namespace SportsApp2.Controllers
 
         public IActionResult NFLTeamStats(int id)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             var team = _context.Nflteams
                 .Include(t => t.NflseasonStat)
                 .FirstOrDefault(t => t.NflteamId == id);
@@ -205,7 +236,7 @@ namespace SportsApp2.Controllers
                 { "Giants", "w3-highway-blue" },
                 { "Jets", "w3-highway-green" },
                 { "Eagles", "w3-vivid-bluish-green" },
-                { "Steelers", "w3-vivid-yellow" },
+                { "Steelers", "w3-food-mustard" },
                 { "49ers", "w3-vivid-red" },
                 { "Seahawks", "w3-food-apple" },
                 { "Buccaneers", "w3-danger" },
