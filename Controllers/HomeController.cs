@@ -1,18 +1,21 @@
 using Azure.Core;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Drawing.Diagrams;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsApp2.Models;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 
 
 namespace SportsApp2.Controllers
 {
     public class HomeController : Controller
     {
+       
         public IActionResult Index()
         {
             return View();
@@ -161,12 +164,6 @@ namespace SportsApp2.Controllers
         }
 
 
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         //This for login
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -229,6 +226,49 @@ namespace SportsApp2.Controllers
             return RedirectToAction("Login");
         }
 
+        [HttpPost]
+        public IActionResult SaveFavoriteNfl(int teamId)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var user = _context.User.FirstOrDefault(u => u.UserId == userId);
+
+            if (user != null)
+            {
+                user.FavNflid = teamId;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("User");
+        }
+
+
+
+
+        [HttpPost]
+        public IActionResult SaveFavoriteNba(int teamId)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var user = _context.User.FirstOrDefault(u => u.UserId == userId);
+
+            if (user != null)
+            {
+                user.FavNbaid = teamId;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("User");
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -380,6 +420,8 @@ namespace SportsApp2.Controllers
             return View(model);
         }
 
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditAccount(EditAccount model)
@@ -439,6 +481,168 @@ namespace SportsApp2.Controllers
             HttpContext.Session.SetString("UserEmail", user.Email);
 
             return RedirectToAction("User");
+        }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPassword model)
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(0, 100000);
+            string code = randomNumber.ToString("D5");
+           
+
+            var user = await _context.User.FirstOrDefaultAsync(u => u.Email == model.Email);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "No account was found with that email.");
+                return View(model);
+            }
+
+            try
+            {
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "No account was found with that email.");
+                    return View(model);
+                }
+                else
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(user.Email);
+                    mail.From = new MailAddress("sportsapplication206@gmail.com", "Sports Management", Encoding.UTF8);
+                    mail.Subject = "Your Sports App Password Recovery Code";
+                    mail.Body = "<p>Your recovery code is: <b>" + code + "</b></p><p>Enter this code on the sports application</p>";
+                    mail.IsBodyHtml = true;
+                    mail.Priority = MailPriority.High;
+
+
+                    using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        client.Credentials = new NetworkCredential(
+                            "sportsapplication206@gmail.com",
+                            "tvbm affx ignj gbfu"
+                        );
+                        client.EnableSsl = true;
+
+                        await client.SendMailAsync(mail);
+                    }
+                    HttpContext.Session.SetString("ResetCode", code);
+                    HttpContext.Session.SetString("ResetEmail", model.Email);
+
+                    return RedirectToAction("VerifyCode");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Email failed to send: " + ex.Message);
+                return View(model);
+            }
+
+           
+        }
+
+        [HttpGet]
+        public IActionResult VerifyCode()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult VerifyCode(VerifyCode model)
+        {
+            var storedCode = HttpContext.Session.GetString("ResetCode");
+            var storedEmail = HttpContext.Session.GetString("ResetEmail");
+
+            if (string.IsNullOrWhiteSpace(model.Code))
+            {
+                ModelState.AddModelError("", "Please enter the code.");
+                return View(model);
+            }
+
+            if (storedCode == null || storedEmail == null)
+            {
+                ModelState.AddModelError("", "Your reset session expired. Please try again.");
+                return RedirectToAction("ForgotPassword");
+            }
+
+            if (model.Code == storedCode)
+            {
+                return RedirectToAction("ResetPassword");
+            }
+
+            ModelState.AddModelError("", "Invalid code.");
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            var email = HttpContext.Session.GetString("ResetEmail");
+
+            if (string.IsNullOrEmpty(email))
+            {
+                return RedirectToAction("ForgotPassword");
+            }
+
+            var model = new ResetPassword
+            {
+                Email = email
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPassword model)
+        {
+            var sessionEmail = HttpContext.Session.GetString("ResetEmail");
+
+            if (string.IsNullOrEmpty(sessionEmail))
+            {
+                return RedirectToAction("ForgotPassword");
+            }
+
+            model.Email = sessionEmail;
+
+            if (string.IsNullOrWhiteSpace(model.NewPassword))
+            {
+                ModelState.AddModelError("", "Please enter a new password.");
+                return View(model);
+            }
+
+            if (model.NewPassword != model.ConfirmPassword)
+            {
+                ModelState.AddModelError("", "Passwords do not match.");
+                return View(model);
+            }
+
+            var user = await _context.User.FirstOrDefaultAsync(u => u.Email == sessionEmail);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "User not found.");
+                return View(model);
+            }
+
+            user.Password = model.NewPassword;
+
+            await _context.SaveChangesAsync();
+
+            HttpContext.Session.Remove("ResetCode");
+            HttpContext.Session.Remove("ResetEmail");
+
+            return RedirectToAction("Login");
         }
     }
 }
