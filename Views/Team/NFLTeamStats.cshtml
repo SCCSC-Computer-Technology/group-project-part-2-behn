@@ -49,22 +49,31 @@
 
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse  w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+    <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
         <br>
         <div class="w3-container">
             <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
                 <i class="fa fa-remove"></i>
             </a>
-            <img src="~/logo.png" alt=Logo style="width:45%; " class="w3-round"><br><br>
+            <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
                 <h4><b>Sports Management</b></h4>
-
             </div>
+
             <div class="w3-bar-block">
-                <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
-                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>USER</a>
-                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
-
+                <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
+                </a>
+                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-user fa-fw w3-margin-right"></i>USER
+                </a>
+                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
+                </a>
+                <a asp-controller="Home" asp-action="UpcomingEventsHTML" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-calendar fa-fw w3-margin-right"></i>UPCOMING EVENTS
+                </a>
             </div>
+
             <div class="w3-panel w3-large">
                 <i class="fa fa-facebook-official w3-hover-opacity"></i>
                 <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -107,7 +116,7 @@
 
         <div class="w3-row-padding">
             <div class="w3-third w3-margin-bottom">
-                    <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 150px;">                          
+                    <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; height: auto;">                          
                         <h3 class="player-name">General Info</h3>
                         <p>Abbreviation: <span class="badge badge-info">@Model.Abbreviation</span></p>
                         <p>Conference: <span class="badge badge-primary">@Model.Conference</span></p>
@@ -119,20 +128,21 @@
         <div class="w3-third w3-margin-bottom">
             <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 150px;">                          
 
-                <h3 class="player-name">Win/Loss</h3>
+                <h3 class="player-name">Win/Loss/Tie</h3>
 
                 <div class="w3-container w3-center">
                     <p>
                         <span class="badge badge-success">@Model.Wins</span>  
                         <span class="badge badge-danger">@Model.Losses</span>
+                        <span class="badge badge-secondary">@Model.Ties</span>
+
                     </p>
                 </div>
 
             </div>
         </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                  <a asp-controller="Team" asp-action="TeamPlayers" asp-route-id="@Model.NflteamId">
+        <a asp-controller="Team" asp-action="NFLTeamPlayers" asp-route-id="@Model.NflteamId">
+                    <div class="w3-third w3-margin-NFLTeamPlayers" asp-route-id="@Model.NflteamId">
                     <div class="w3-card @teamColor w3-padding w3-hover-opacity" style="display: flex; justify-content: center; align-items: center; height: 150px;">
       
                       <h3 class="player-name">Players</h3>
@@ -152,13 +162,23 @@
                 
                         
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p>Games Played: <span class="badge badge-dark">@Model.NflseasonStat.Gp.Gp</span></p>
+                            <p>Games Played: <span class="badge badge-light">@Model.NflseasonStat.Gp</span></p>
+                            <p>Total Points: <span class="badge badge-success">@Model.NflseasonStat.Points</span></p>
                             <p>Points Per Game: <span class="badge badge-success">@Model.NflseasonStat.PointsPerGame</span></p>
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p>Rebounds Per Game: <span class="badge badge-primary">@Model.</span></p>
-                            <p>Assists Per Game: <span class="badge badge-warning">@Model.</span></p>
+                            <p>Total Yards: <span class="badge badge-warning">@Model.NflseasonStat.TotalYards</span></p>
+                            <p>Total Yards Per Game: <span class="badge badge-warning">@Model.NflseasonStat.TotalYardsPerGame</span></p>
+                        </div>
+
+                          <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <p>Passing Yards: <span class="badge badge-info">@Model.NflseasonStat.PassingYards</span></p>
+                            <p>Passing Yards Per Game: <span class="badge badge-info">@Model.NflseasonStat.PassingYardsPerGame</span></p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <p>Rushing Yards: <span class="badge badge-danger">@Model.NflseasonStat.RushingYards</span></p>
+                            <p>Rushing Yards Per Game: <span class="badge badge-danger">@Model.NflseasonStat.RushingYardsPerGame</span></p>
                         </div>
                     </div>
                 </div>
