@@ -55,7 +55,7 @@ namespace SportsApp2.Controllers
                 { "Jazz", "w3-deep-purple" },
                 { "Wizards", "w3-food-strawberry" },
                 { "Hawks", "w3-red" },
-                { "Blazers", "w3-red" },
+                { "Trailblazers", "w3-red" },
                 { "Cavaliers", "w3-food-wine" },
                 { "Grizzlies", "w3-asphalt" },
                 { "Nuggets", "w3-amber" }
@@ -176,7 +176,7 @@ namespace SportsApp2.Controllers
                 { "Jazz", "w3-deep-purple" },
                 { "Wizards", "w3-food-strawberry" },
                 { "Hawks", "w3-red" },
-                { "Blazers", "w3-red" },
+                { "Trailblazers", "w3-red" },
                 { "Cavaliers", "w3-food-wine" },
                 { "Grizzlies", "w3-asphalt" },
                 { "Nuggets", "w3-amber" }
