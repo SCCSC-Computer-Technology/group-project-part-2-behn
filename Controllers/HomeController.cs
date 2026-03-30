@@ -19,7 +19,7 @@ namespace SportsApp2.Controllers
         public IActionResult Index()
         {
             return View();
-        }
+        }        
 
         public IActionResult Page1()
         {
@@ -281,6 +281,64 @@ namespace SportsApp2.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Contact(string Name, string Email, string Message)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add("sportsapplication206@gmail.com");
+                mail.From = new MailAddress("sportsapplication206@gmail.com", "Sports Management", Encoding.UTF8);
+                mail.Subject = "New Contact Form Message";
+                mail.Body =
+                    "<p><b>Name:</b> " + Name + "</p>" +
+                    "<p><b>Email:</b> " + Email + "</p>" +
+                    "<p><b>Message:</b><br>" + Message + "</p>";
+                mail.IsBodyHtml = true;
+                mail.Priority = MailPriority.High;
+
+                using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    client.Credentials = new NetworkCredential(
+                        "sportsapplication206@gmail.com",
+                        "tvbm affx ignj gbfu"
+                    );
+                    client.EnableSsl = true;
+
+                    await client.SendMailAsync(mail);
+                }
+
+                ViewBag.SuccessMessage = "Your message has been sent successfully.";
+            }
+            catch
+            {
+                ViewBag.SuccessMessage = "There was a problem sending your message.";
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> Favorites()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var user = await _context.User.FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Login");
+            }
+
+            return View(user);
+        }
+
 
 
         //This for login
