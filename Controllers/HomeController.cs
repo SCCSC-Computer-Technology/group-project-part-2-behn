@@ -25,7 +25,7 @@ namespace SportsApp2.Controllers
         {
             var userId = HttpContext.Session.GetInt32("UserId");
 
-            if (userId == null)
+            if (userId == null) //check if user is logged in, if not send back to login page
             {
                 return RedirectToAction("Login");
             }
@@ -457,16 +457,16 @@ namespace SportsApp2.Controllers
                 return RedirectToAction("Login");
             }
 
-            var user = _context.User.FirstOrDefault(u => u.UserId == userId);
+            var user = _context.User.FirstOrDefault(u => u.UserId == userId); // finds user in db based on userID in the HttpContext.Session
 
             if (user != null)
             {
                 user.FavNflid = null;
-                user.FavNbaid = null;
-                _context.SaveChanges();
+                user.FavNbaid = null;//sets favorite teams to null
+                _context.SaveChanges(); //saves changes
             }
 
-            return RedirectToAction("User");
+            return RedirectToAction("User"); //refreshes page so changes are visible to user
         }
 
         [HttpPost]

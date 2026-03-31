@@ -27,7 +27,7 @@ namespace SportsApp2.Controllers
                 .Include(t => t.Nbaplayers)
                 .FirstOrDefault(t => t.NbateamId == id);
 
-            var teamColors = new Dictionary<string, string>
+            var teamColors = new Dictionary<string, string> //dictionary of each NBA team that matches their name to a color
             {
                 { "Lakers", "w3-deep-purple" },
                 { "Bulls", "w3-vivid-red" },
@@ -61,7 +61,7 @@ namespace SportsApp2.Controllers
                 { "Nuggets", "w3-amber" }
             };
 
-            ViewBag.TeamColors = teamColors;
+            ViewBag.TeamColors = teamColors; //added dictionary to viewbag so it is accessible in the page
 
 
 
@@ -88,7 +88,7 @@ namespace SportsApp2.Controllers
                 .Include(t => t.Nflplayers)
                 .FirstOrDefault(t => t.NflteamId == id);
 
-            var teamColors = new Dictionary<string, string>
+            var teamColors = new Dictionary<string, string> //dictionary of each NFL team that matches their name to a color
             {   
                 { "Cardinals", "w3-food-cranberry" },
                 { "Falcons", "w3-vivid-red" },
@@ -129,7 +129,7 @@ namespace SportsApp2.Controllers
                 return Content("Team not found.");
             }
 
-            ViewBag.TeamColors = teamColors;
+            ViewBag.TeamColors = teamColors; //added dictionary to viewbag so it is accessible in the page
 
             return View(team);
         }

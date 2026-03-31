@@ -4,8 +4,8 @@
     ViewData["Title"] = Model.TeamName + " Team Stats";
     var teamName = Model.TeamName.Split(' ').Last();
     //taking last part of team name for finding matching logo
-    var logoImage = teamName + ".png";
-    var teamColor = ViewBag.TeamColors.ContainsKey(teamName) ? ViewBag.TeamColors[teamName] : "w3-grey";
+    var logoImage = teamName + ".png";//match png with team name
+    var teamColor = ViewBag.TeamColors.ContainsKey(teamName) ? ViewBag.TeamColors[teamName] : "w3-grey"; //match color with team name using dictionary
 }
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--style sheets for w3 css elements/color libraries and bootstrap -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -108,12 +109,12 @@
             <img src="~/@logoImage" alt="@Model.TeamName Logo" class="img-fluid mx-auto d-block" style="max-width: 600px;">
             </div>
 
-
+            <!-- Team name heading -->
         <h1 class="teamplayers">@Model.TeamName</h1>
          <div class="w3-section w3-topbar w3-padding-16">
                          </div>
 
-
+                          <!-- General info card -->
         <div class="w3-row-padding">
             <div class="w3-third w3-margin-bottom">
                     <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; height: auto;">                          
@@ -125,6 +126,7 @@
                         
                     </div>
                 </div>
+                  <!--Win/Loss card -->
         <div class="w3-third w3-margin-bottom">
             <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 150px;">                          
 
@@ -141,8 +143,9 @@
 
             </div>
         </div>
+          <!-- Card that acts as button to go to Players Page -->
         <a asp-controller="Team" asp-action="NFLTeamPlayers" asp-route-id="@Model.NflteamId">
-                    <div class="w3-third w3-margin-NFLTeamPlayers" asp-route-id="@Model.NflteamId">
+                   
                     <div class="w3-card @teamColor w3-padding w3-hover-opacity" style="display: flex; justify-content: center; align-items: center; height: 150px;">
       
                      <h3 class="player-name" style="text-decoration: underline;">Player Stats</h3>
@@ -151,7 +154,7 @@
                   </a>
                 </div>
         </div>
-
+                  <!-- Current season stats card -->
                   <div class="w3-row-padding">
             <div class="w3-margin-bottom" style="width: 100%;">
                 <div class="w3-card @teamColor w3-padding" style="display: flex; flex-direction: column; width: 100%;">
@@ -160,24 +163,24 @@
                   
                     <div style="display: flex; justify-content: space-around; margin-top: 10px; width: 100%;">
                 
-                        
+                        <!-- each related stat is the same color badge -->
                         <div style="display: flex; flex-direction: column; gap: 8px;">
                             <p>Games Played: <span class="badge badge-light">@Model.NflseasonStat.Gp</span></p>
-                            <p>Total Points: <span class="badge badge-success">@Model.NflseasonStat.Points</span></p>
+                            <p>Total Points: <span class="badge badge-success">@Model.NflseasonStat.Points</span></p>  <!-- green badge for points -->
                             <p>Points Per Game: <span class="badge badge-success">@Model.NflseasonStat.PointsPerGame</span></p>
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p>Total Yards: <span class="badge badge-warning">@Model.NflseasonStat.TotalYards</span></p>
+                            <p>Total Yards: <span class="badge badge-warning">@Model.NflseasonStat.TotalYards</span></p>  <!-- yellow badge for total yards -->
                             <p>Total Yards Per Game: <span class="badge badge-warning">@Model.NflseasonStat.TotalYardsPerGame</span></p>
                         </div>
 
                           <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p>Passing Yards: <span class="badge badge-info">@Model.NflseasonStat.PassingYards</span></p>
+                            <p>Passing Yards: <span class="badge badge-info">@Model.NflseasonStat.PassingYards</span></p> <!-- blue badge for passing yards -->
                             <p>Passing Yards Per Game: <span class="badge badge-info">@Model.NflseasonStat.PassingYardsPerGame</span></p>
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p>Rushing Yards: <span class="badge badge-danger">@Model.NflseasonStat.RushingYards</span></p>
+                            <p>Rushing Yards: <span class="badge badge-danger">@Model.NflseasonStat.RushingYards</span></p> <!-- red badge for rushing yards -->
                             <p>Rushing Yards Per Game: <span class="badge badge-danger">@Model.NflseasonStat.RushingYardsPerGame</span></p>
                         </div>
                     </div>
@@ -187,7 +190,6 @@
 
 
 
-        </div>
 
           
 
