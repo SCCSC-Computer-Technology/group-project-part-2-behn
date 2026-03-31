@@ -5,8 +5,8 @@
     ViewData["Title"] = Model.TeamName + " Players";
     var teamName = Model.TeamName.Split(' ').Last();
     //taking last part of team name for finding matching logo
-    var logoImage = teamName + ".png";
-    var teamColor = ViewBag.TeamColors.ContainsKey(teamName) ? ViewBag.TeamColors[teamName] : "w3-grey";
+    var logoImage = teamName + ".png";//match png with team name
+    var teamColor = ViewBag.TeamColors.ContainsKey(teamName) ? ViewBag.TeamColors[teamName] : "w3-grey"; //match color with team name using dictionary
     
 
 }
@@ -17,6 +17,7 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!--style sheets for w3 css elements/color libraries and bootstrap -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -63,7 +64,7 @@
             </div>
 
             <div class="w3-bar-block">
-                <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"> 
                     <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
                 </a>
                 <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
@@ -111,17 +112,17 @@
             <img src="~/@logoImage" alt="@Model.TeamName Logo" class="img-fluid mx-auto d-block" style="max-width: 600px;">
             </div>
 
-
+            <!--team name heading--> 
         <h1 class="teamplayers">@Model.TeamName Players</h1>
          <div class="w3-section w3-topbar w3-padding-16">
                          </div>
-
-
+                         
+        <!--player card with info from model--> 
         <div class="w3-row-padding">
             @foreach (var player in Model.Nflplayers)
             {
                 int heightInches = 0;
-                if (int.TryParse(player.Height, out int result))
+                if (int.TryParse(player.Height, out int result)) //convert player.Height (inches) to formatted height for card
                 {
                     heightInches = result;
                 }
