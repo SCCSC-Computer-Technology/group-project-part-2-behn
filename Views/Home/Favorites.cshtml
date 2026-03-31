@@ -1,0 +1,672 @@
+﻿@model SportsApp2.Models.User
+@{
+    Layout = null;
+    ViewData["Title"] = "Favorites";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sports Managment -Favorites</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: "Raleway", sans-serif;
+            }
+
+            .topnav .search-container {
+                float: right;
+            }
+
+            .topnav input[type=text] {
+                padding: 6px;
+                margin-top: 8px;
+                font-size: 17px;
+                border: none;
+            }
+
+            .topnav .search-container button {
+                float: right;
+                padding: 6px 10px;
+                margin-top: 8px;
+                margin-right: 16px;
+                background: #ddd;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+                .topnav .search-container button:hover {
+                    background: #ccc;
+                }
+
+            .team-link {
+                text-decoration: none;
+                color: black;
+                display: block;
+            }
+    </style>
+</head>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color:#e6eff9;" id="mySidebar">
+        <br>
+        <div class="w3-container">
+            <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <img src="~/logo.png" alt="Logo" style="width:45%;" class="w3-round"><br><br>
+                <h4><b>Sports Management</b></h4>
+            </div>
+
+            <div class="w3-bar-block">
+                <a asp-controller="Home" asp-action="Page1" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="color:#2694e1;">
+                    <i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME
+                </a>
+                <a asp-controller="Home" asp-action="User" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-user fa-fw w3-margin-right"></i>USER
+                </a>
+                <a asp-controller="Home" asp-action="Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
+                </a>
+                <a asp-controller="Home" asp-action="UpcomingEventsHTML" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+                    <i class="fa fa-calendar fa-fw w3-margin-right"></i>UPCOMING EVENTS
+                </a>
+            </div>
+
+            <div class="w3-panel w3-large">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main" style="margin-left:300px">
+
+            <!-- Header -->
+            <header id="Sports Management">
+                <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+                <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+                <div class="w3-container">
+                    <h1><b>Sports Management</b></h1>
+                    <div class="w3-section w3-bottombar w3-padding-16">
+                        <span class="w3-margin-right">Filter:</span>
+
+                        <a asp-controller="Home" asp-action="Page1" class="w3-button w3-white">ALL</a>
+
+                        <a asp-controller="Home" asp-action="NFLPage1" class="w3-button w3-white">
+                            NFL
+                        </a>
+
+                        <a asp-controller="Home" asp-action="NBAPage1" class="w3-button w3-white">
+                            NBA
+                        </a>
+
+                        <a asp-controller="Home" asp-action="Favorites" class="w3-button w3-black">
+                            <i class="fa fa-star w3-margin-right"></i>FAVORITES
+                        </a>
+
+                        <form asp-controller="Home" asp-action="Search" method="get" style="display:inline;">
+                            <input type="text" placeholder="Search teams..." name="searchTerm" />
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Favorites Grid -->
+            <div class="w3-row-padding">
+
+                <!-- NFL Favorite -->
+                <div class="w3-half w3-container w3-margin-bottom">
+                    <div class="w3-white w3-padding w3-center" style="min-height:350px;">
+                        <h2 class="w3-text-grey w3-padding-16">
+                            <img src="~/Football.png" style="width:64px; margin-right:6px; vertical-align:middle;">
+                                NFL Favorite
+                            </h2>
+
+                            @if (Model == null || Model.FavNflid == null)
+                            {
+                                <a asp-controller="Home" asp-action="User" class="team-link">
+                                    <div class="favorite-placeholder" style="padding-top:40px;">
+                                        <i class="fa fa-plus-circle" style="font-size:48px; color:#999;"></i>
+                                        <p>No favorite NFL team selected</p>
+                                    </div>
+                                </a>
+                            }                            
+                            else if (Model.FavNflid == 3)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="3" class="team-link">
+                                    <img src="~/Ravens.png" alt="Ravens" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Baltimore Ravens</b></p>
+                                    <p>AFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 26)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="26" class="team-link">
+                                    <img src="~/Eagles.png" alt="Eagles" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Philadelphia Eagles</b></p>
+                                    <p>NFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 27)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="27" class="team-link">
+                                    <img src="~/Steelers.png" alt="Steelers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Pittsburgh Steelers</b></p>
+                                    <p>AFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 32)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="32" class="team-link">
+                                    <img src="~/Commanders.png" alt="Commanders" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Washington Commanders</b></p>
+                                    <p>NFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 25)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="25" class="team-link">
+                                    <img src="~/Jets.png" alt="Jets" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>New York Jets</b></p>
+                                    <p>AFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 24)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="24" class="team-link">
+                                    <img src="~/Giants.png" alt="Giants" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>New York Giants</b></p>
+                                    <p>NFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 4)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="4" class="team-link">
+                                    <img src="~/Bills.png" alt="Bills" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Buffalo Bills</b></p>
+                                    <p>AFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 5)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="5" class="team-link">
+                                    <img src="~/Panthers.png" alt="Panthers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Carolina Panthers</b></p>
+                                    <p>NFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 2)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="2" class="team-link">
+                                    <img src="~/Falcons.png" alt="Falcons" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Atlanta Falcons</b></p>
+                                    <p>NFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 15)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="15" class="team-link">
+                                    <img src="~/Jaguars.png" alt="Jaguars" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Jacksonville Jaguars</b></p>
+                                    <p>AFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 20)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="20" class="team-link">
+                                    <img src="~/Dolphins.png" alt="Dolphins" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Miami Dolphins</b></p>
+                                    <p>AFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 30)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="30" class="team-link">
+                                    <img src="~/Buccaneers.png" alt="Buccaneers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Tampa Bay Buccaneers</b></p>
+                                    <p>NFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 9)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="9" class="team-link">
+                                    <img src="~/Cowboys.png" alt="Cowboys" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Dallas Cowboys</b></p>
+                                    <p>NFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 13)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="13" class="team-link">
+                                    <img src="~/Texans.png" alt="Texans" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Houston Texans</b></p>
+                                    <p>AFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 17)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="17" class="team-link">
+                                    <img src="~/Raiders.png" alt="Raiders" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Las Vegas Raiders</b></p>
+                                    <p>AFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 11)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="11" class="team-link">
+                                    <img src="~/Lions.png" alt="Lions" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Detroit Lions</b></p>
+                                    <p>NFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 6)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="6" class="team-link">
+                                    <img src="~/Bears.png" alt="Bears" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Chicago Bears</b></p>
+                                    <p>NFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 12)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="12" class="team-link">
+                                    <img src="~/Green Bay.png" alt="Packers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Green Bay Packers</b></p>
+                                    <p>NFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 7)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="7" class="team-link">
+                                    <img src="~/Bengals.png" alt="Bengals" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Cincinnati Bengals</b></p>
+                                    <p>AFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 14)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="14" class="team-link">
+                                    <img src="~/Colts.png" alt="Colts" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Indianapolis Colts</b></p>
+                                    <p>AFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 8)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="8" class="team-link">
+                                    <img src="~/Browns.png" alt="Browns" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Cleveland Browns</b></p>
+                                    <p>AFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 16)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="16" class="team-link">
+                                    <img src="~/Chiefs.png" alt="Chiefs" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Kansas City Chiefs</b></p>
+                                    <p>AFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 21)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="21" class="team-link">
+                                    <img src="~/Vikings.png" alt="Vikings" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Minnesota Vikings</b></p>
+                                    <p>NFC NORTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 1)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="1" class="team-link">
+                                    <img src="~/Cardinals.png" alt="Cardinals" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Arizona Cardinals</b></p>
+                                    <p>NFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 19)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="19" class="team-link">
+                                    <img src="~/Rams.png" alt="Rams" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Los Angeles Rams</b></p>
+                                    <p>NFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 18)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="18" class="team-link">
+                                    <img src="~/Chargers.png" alt="Chargers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Los Angeles Chargers</b></p>
+                                    <p>AFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 28)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="28" class="team-link">
+                                    <img src="~/49ers.png" alt="49ers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>San Francisco 49ers</b></p>
+                                    <p>NFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 10)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="10" class="team-link">
+                                    <img src="~/Broncos.png" alt="Broncos" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Denver Broncos</b></p>
+                                    <p>AFC WEST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 23)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="23" class="team-link">
+                                    <img src="~/Saints.png" alt="Saints" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>New Orleans Saints</b></p>
+                                    <p>NFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 22)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="22" class="team-link">
+                                    <img src="~/Patriots.png" alt="Patriots" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>New England Patriots</b></p>
+                                    <p>AFC EAST</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 31)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="31" class="team-link">
+                                    <img src="~/Titans.png" alt="Titans" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Tennessee Titans</b></p>
+                                    <p>AFC SOUTH</p>
+                                </a>
+                            }
+                            else if (Model.FavNflid == 29)
+                            {
+                                <a asp-controller="Team" asp-action="NFLTeamStats" asp-route-id="29" class="team-link">
+                                    <img src="~/Seahawks.png" alt="Seahawks" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                    <p><b>Seattle Seahawks</b></p>
+                                    <p>NFC WEST</p>
+                                </a>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- NBA Favorite -->
+                    <div class="w3-half w3-container w3-margin-bottom">
+                        <div class="w3-white w3-padding w3-center" style="min-height:350px;">
+                            <h2 class="w3-text-grey w3-padding-16">
+                                <img src="~/Basketball.png" style="width:64px; margin-right:6px; vertical-align:middle;">
+                                    NBA Favorite
+                                </h2>
+
+                                @if (Model == null || Model.FavNbaid == null)
+                                {
+                                    <a asp-controller="Home" asp-action="User" class="team-link">
+                                        <div class="favorite-placeholder" style="padding-top:40px;">
+                                            <i class="fa fa-plus-circle" style="font-size:48px; color:#999;"></i>
+                                            <p>No favorite NBA team selected</p>
+                                        </div>
+                                    </a>
+                                }                                
+                                else if (Model.FavNbaid == 1)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="1" class="team-link">
+                                        <img src="~/Hawks.png" alt="Hawks" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Atlanta Hawks</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 2)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="2" class="team-link">
+                                        <img src="~/Celtics.png" alt="Celtics" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Boston Celtics</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 3)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="3" class="team-link">
+                                        <img src="~/Nets.png" alt="Nets" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Brooklyn Nets</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 4)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="4" class="team-link">
+                                        <img src="~/Hornets.png" alt="Hornets" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Charlotte Hornets</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 5)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="5" class="team-link">
+                                        <img src="~/Bulls.png" alt="Bulls" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Chicago Bulls</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 6)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="6" class="team-link">
+                                        <img src="~/Cavaliers.png" alt="Cavaliers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Cleveland Cavaliers</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 7)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="7" class="team-link">
+                                        <img src="~/Mavericks.png" alt="Mavericks" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Dallas Mavericks</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 8)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="8" class="team-link">
+                                        <img src="~/Nuggets.png" alt="Nuggets" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Denver Nuggets</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 9)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="9" class="team-link">
+                                        <img src="~/Pistons.png" alt="Pistons" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Detroit Pistons</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 10)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="10" class="team-link">
+                                        <img src="~/Warriors.png" alt="Warriors" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Golden State Warriors</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 11)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="11" class="team-link">
+                                        <img src="~/Rockets.png" alt="Rockets" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Houston Rockets</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 12)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="12" class="team-link">
+                                        <img src="~/Pacers.png" alt="Pacers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Indiana Pacers</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 13)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="13" class="team-link">
+                                        <img src="~/Clippers.png" alt="Clippers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Los Angeles Clippers</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 14)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="14" class="team-link">
+                                        <img src="~/Lakers.png" alt="Lakers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Los Angeles Lakers</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 15)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="15" class="team-link">
+                                        <img src="~/Grizzlies.png" alt="Grizzlies" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Memphis Grizzlies</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 16)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="16" class="team-link">
+                                        <img src="~/Heat.png" alt="Heat" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Miami Heat</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 17)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="17" class="team-link">
+                                        <img src="~/Bucks.png" alt="Bucks" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Milwaukee Bucks</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 18)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="18" class="team-link">
+                                        <img src="~/Timberwolves.png" alt="Timberwolves" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Minnesota Timberwolves</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 19)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="19" class="team-link">
+                                        <img src="~/Pelicans.png" alt="Pelicans" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>New Orleans Pelicans</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 20)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="20" class="team-link">
+                                        <img src="~/Knicks.png" alt="Knicks" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>New York Knicks</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 21)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="21" class="team-link">
+                                        <img src="~/Thunder.png" alt="Thunder" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Oklahoma City Thunder</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 22)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="22" class="team-link">
+                                        <img src="~/Magic.png" alt="Magic" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Orlando Magic</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 23)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="23" class="team-link">
+                                        <img src="~/76ers.png" alt="76ers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Philadelphia 76ers</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 24)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="24" class="team-link">
+                                        <img src="~/Suns.png" alt="Suns" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Phoenix Suns</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 25)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="25" class="team-link">
+                                        <img src="~/Trailblazers.png" alt="Trail Blazers" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Portland Trail Blazers</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 26)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="26" class="team-link">
+                                        <img src="~/Kings.png" alt="Kings" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Sacramento Kings</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 27)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="27" class="team-link">
+                                        <img src="~/Spurs.png" alt="Spurs" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>San Antonio Spurs</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 28)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="28" class="team-link">
+                                        <img src="~/Raptors.png" alt="Raptors" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Toronto Raptors</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 29)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="29" class="team-link">
+                                        <img src="~/Jazz.png" alt="Jazz" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Utah Jazz</b></p>
+                                    </a>
+                                }
+                                else if (Model.FavNbaid == 30)
+                                {
+                                    <a asp-controller="Team" asp-action="NBATeamStats" asp-route-id="30" class="team-link">
+                                        <img src="~/Wizards.png" alt="Wizards" style="width:100%; max-width:250px;" class="w3-hover-opacity" />
+                                        <p><b>Washington Wizards</b></p>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                        <!-- Footer  -->
+                        <footer style="margin-top:12px">
+                            <div class="w3-row-padding" style="background:#011d4a; color:white;">
+                                <p>GAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Please Gamble Responsibly. 888-789-7777/visit ccpg.org (CT),or visit www.mdgamblinghelp.org (MD). 21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH. Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms: sportsbook.draftkings.com/promos.</p>
+                                <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                            </div>
+                        </footer>
+
+                        <div class="w3-row-padding" style="background:black; color:white;">
+                            <h5>Author: Sports Application</h5>
+                            <p><a href="mailto:sportsapplication206@gmail.com">sportsapplication206@gmail.com</a></p>
+                            <p>Copyright: © 2026 Sports Application, LLC. All rights reserved.</p>
+                        </div>
+
+                    </div>
+
+                    <script>
+                                function w3_open() {
+                                    document.getElementById("mySidebar").style.display = "block";
+                                    document.getElementById("myOverlay").style.display = "block";
+                                }
+
+                                function w3_close() {
+                                    document.getElementById("mySidebar").style.display = "none";
+                                    document.getElementById("myOverlay").style.display = "none";
+                                }
+                    </script>
+
+                </body>
+            </html>
+
+                                     
+                                                

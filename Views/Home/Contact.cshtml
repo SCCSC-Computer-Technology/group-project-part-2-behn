@@ -77,21 +77,31 @@
             </div>
         </div>
         <hr class="w3-opacity">
-        <form action="/action_page.php" target="_blank">
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="w3-panel w3-green w3-padding">
+                @ViewBag.SuccessMessage
+            </div>
+        }
+
+        <form asp-controller="Home" asp-action="Contact" method="post">
             <div class="w3-section">
                 <label>Name</label>
                 <input class="w3-input w3-border" type="text" name="Name" required>
             </div>
             <div class="w3-section">
                 <label>Email</label>
-                <input class="w3-input w3-border" type="text" name="Email" required>
+                <input class="w3-input w3-border" type="email" name="Email" required>
             </div>
-            <div class="w3-section">
-                <label>Message</label>
-                <input class="w3-input w3-border" type="text" name="Message" required>
-            </div>
-            <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
-        </form>
+        <div class="w3-section">
+            <label>Message</label>
+            <textarea class="w3-input w3-border" name="Message" required></textarea>
+        </div>
+        <button type="submit" class="w3-button w3-black w3-margin-bottom">
+            <i class="fa fa-paper-plane w3-margin-right"></i>Send Message
+        </button>
+    </form>
     </div>
 
          <footer>
